@@ -6,10 +6,21 @@ Please submit your package requests as issues here
 * RFP - Request for Package - this is for packages that do not exist
 * RFM - Request for Maintainer(s) - this is for packages that do exist, but need new maintainers
 
+## Etiquette Regarding Communication
+If you are an open source user requesting support, please remember that most folks in the Chocolatey community are volunteers that have lives outside of open source and are not paid to ensure things work for you, so please be considerate of others' time when you are asking for things. Many of us have families that also need time as well and only have so much time to give on a daily basis. A little consideration and patience can go a long way.
+
 ### How To Create a Request
 
-* Search and vote up an existing request or create a new request, using either "RFP - packagename" or "RFM - packagename"
-* Explain a bit about the software if you can and possible hopes for what a package would look like
+* Search and vote up an existing request or create a new request, using either "RFP - packagename" or "RFM - packagename";
+* Explain a bit about the software if you can and possible hopes for what a package would look like;
+
+### Before submitting a request for packager (RFP)
+
+Search the [Chocolatey Community Repository](https://chocolatey.org/packages) to make sure the package doesn't already exist. Search using the program name and a hyphenated version of the program name; e.g. for Total Commander search for `totalcommander` and `total-commander`. You should also search for relevant tags such as `filemanager` or `file manager`.
+
+### Before submitting a request for new maintainer(s) (RFM)
+
+If you are the current maintainer of the package then create a new request using "RFM - packagename". If you are not the current maintainer then please make sure you have read the [Package Triage Process](https://chocolatey.org/docs/package-triage-process#package-is-outdated) and follow the guidelines there.
 
 ### How To Create Packages for a Request
 
