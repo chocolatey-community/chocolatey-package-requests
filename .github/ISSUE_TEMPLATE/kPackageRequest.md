@@ -14,7 +14,7 @@ about: Request a package be created that does not currently exist in the Chocola
 
 NOTE: Keep in mind we have an etiquette regarding communication that we expect folks to observe when they are looking for support in the Chocolatey community - https://github.com/chocolatey/chocolatey-package-requests/blob/master/README.md#etiquette-regarding-communication
 
-PLEASE REMOVE THESE COMMENTS ONCE YOU HAVE READ THEM.
+PLEASE REMOVE ALL COMMENTS ONCE YOU HAVE READ THEM.
 
 -->
 ## Checklist
@@ -28,3 +28,8 @@ PLEASE REMOVE THESE COMMENTS ONCE YOU HAVE READ THEM.
 
 Software project URL :
 Direct download URL for the software / installer :
+Software summary / short description:
+
+<!-- ## Package Expectations
+Here you can make suggestions on what you would expect the package to do outside of 'installing' - eg. adding icons to the desktop
+-->
