@@ -11,8 +11,16 @@ If you are an open source user requesting support, please remember that most fol
 
 ### How To Create a Request
 
-* Search and vote up an existing request or create a new request, using either "RFP - packagename" or "RFM - packagename"
-* Explain a bit about the software if you can and possible hopes for what a package would look like
+* Search and vote up an existing request or create a new request, using either "RFP - packagename" or "RFM - packagename";
+* Explain a bit about the software if you can and possible hopes for what a package would look like;
+
+### Before submitting a request for packager (RFP)
+
+Search the [Chocolatey Community Repository](https://chocolatey.org/packages) to make sure the package doesn't already exist. Search using the program name and a hyphenated version of the program name; e.g. for Total Commander search for `totalcommander` and `total-commander`. You should also search for relevant tags such as `filemanager` or `file manager`.
+
+### Before submitting a request for new maintainer(s) (RFM)
+
+If you are the current maintainer of the package then create a new request using "RFM - packagename". If you are not the current maintainer then please make sure you have read the [Package Triage Process](https://chocolatey.org/docs/package-triage-process#package-is-outdated) and follow the guidelines there.
 
 ### How To Create Packages for a Request
 
