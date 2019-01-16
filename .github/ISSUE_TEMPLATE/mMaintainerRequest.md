@@ -16,7 +16,7 @@ Please ensure you have the package URL from https://chocolatey.org/packages befo
 
 NOTE: Keep in mind we have an etiquette regarding communication that we expect folks to observe when they are looking for support in the Chocolatey community - https://github.com/chocolatey/chocolatey-package-requests/blob/master/README.md#etiquette-regarding-communication
 
-PLEASE REMOVE THESE COMMENTS ONCE YOU HAVE READ THEM.
+PLEASE REMOVE ALL COMMENTS ONCE YOU HAVE READ THEM.
 
 -->
 ## Current Maintainer
@@ -34,4 +34,5 @@ PLEASE REMOVE THESE COMMENTS ONCE YOU HAVE READ THEM.
 
 ## Existing Package Details
 
-Exiting package URL:
+Package URL:
+Package source URL:
