@@ -36,3 +36,6 @@ PLEASE REMOVE ALL COMMENTS ONCE YOU HAVE READ THEM.
 
 Package URL:
 Package source URL:
+<!-- please remove the following section if you are the current maintainer of the package, otherwise fill out the details -->
+Date the maintainer was contacted:
+How the maintainer was contacted:
