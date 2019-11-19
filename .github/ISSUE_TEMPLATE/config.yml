@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Report Chocolatey Package Issue
+    url: https://chocolatey.org/docs/package-triage-process
+    about: Reporting issues with a Chocolatey package?
+  - name: Ask Questions on forum
+    url: https://groups.google.com/forum/#!forum/chocolatey
+    about: Do you have a question?
+  - name: Ask Questions in public chat
+    url: https://gitter.im/chocolatey/chocolatey.org
+    about: Do you have questions?
