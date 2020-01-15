@@ -1,4 +1,5 @@
 # chocolatey-package-requests
+
 Please submit your package requests as issues here
 
 ### Terminology
@@ -7,6 +8,7 @@ Please submit your package requests as issues here
 * RFM - Request for Maintainer(s) - this is for packages that do exist, but need new maintainers
 
 ## Etiquette Regarding Communication
+
 If you are an open source user requesting support, please remember that most folks in the Chocolatey community are volunteers that have lives outside of open source and are not paid to ensure things work for you, so please be considerate of others' time when you are asking for things. Many of us have families that also need time as well and only have so much time to give on a daily basis. A little consideration and patience can go a long way.
 
 ### How To Create a Request
