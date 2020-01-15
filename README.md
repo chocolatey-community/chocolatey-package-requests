@@ -14,7 +14,7 @@ If you are an open source user requesting support, please remember that most fol
 ### How To Create a Request
 
 * Search and vote up an existing request or create a new request, using either "RFP - packagename" or "RFM - packagename";
-* Explain a bit about the software if you can and possible hopes for what a package would look like;
+* Using the template; explain a bit about the software if you can and possible hopes for what a package would look like;
 
 ### Before submitting a request for packager (RFP)
 
