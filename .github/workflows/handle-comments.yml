@@ -1,0 +1,74 @@
+﻿name: Handle Comments
+
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  comments:
+    if: ${{ startsWith(github.event.comment.body, '/') }}
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    outputs:
+      success: ${{ steps.commenter.outputs.success }}
+
+    steps:
+      - uses: actions/checkout@v2.2.0
+      - name: Attach/Confirm users
+        if: ${{ startsWith(github.event.comment.body, '/attach') || startsWith(github.event.comment.body, '/confirm') }}
+        run: |
+          Import-Module "${{ github.workspace }}/scripts/validation.psm1"
+          New-UserConnection -commentId ${{ github.event.comment.id }} -repository "${{ github.event.repository.full_name }}"
+        shell: pwsh
+      - name: Detach/remove users
+        if: ${{ startsWith(github.event.comment.body, '/detach') || startsWith(github.event.comment.body, '/remove user') }}
+        run: |
+          Import-Module "${{ github.workspace }}/scripts/validation.psm1"
+          Remove-UserConnection -commentId ${{ github.event.comment.id }} -repository "${{ github.event.repository.full_name }}"
+        shell: pwsh
+      - name: Commit added user
+        if: ${{ startsWith(github.event.comment.body, '/attach') || startsWith(github.event.comment.body, '/confirm') || startsWith(github.event.comment.body, '/detach') || startsWith(github.event.comment.body, '/remove user') }}
+        uses: EndBug/add-and-commit@v4.2.0
+        with:
+          add: scripts/users.json
+          message: |
+            (bot) Updated user configurations
+
+            Co-Authored-By: ${{ github.event.sender.login }} <${{ github.event.sender.login }}@users.noreply.github.com>
+          author_name: github-actions[bot]
+          author_email: github-actions[bot]@users.noreply.github.com
+      - name: Submit comment
+        id: commenter
+        run: |
+          if (Test-Path "${{ github.workspace }}/scripts/comment.txt") {
+            $body = Get-Content "${{ github.workspace }}/scripts/comment.txt" -Encoding utf8NoBOM -Raw
+            Import-Module "${{ github.workspace }}/scripts/validation.psm1"
+            Submit-Comment -issueNumber ${{ github.event.issue.number }} -repository "${{ github.event.repository.full_name }}" -commentBody "$body"
+            "::set-output name=success::$($body -notmatch "permission|not recognize")"
+          }
+        shell: pwsh
+  recheck_pkgs:
+    if: ${{ (needs.comments.outputs.success == 'True' || startsWith(github.event.comment.body, '/recheck')) && github.event.issue.state == 'open' }}
+    runs-on: windows-latest
+    needs: comments
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # Becasue comment steps take way shorter time than installing
+      # packages, we can run these in parallel
+    steps:
+      - name: Install needed packages
+        uses: crazy-max/ghaction-chocolatey@v1.2.2
+        with:
+          args: install trid 7zip.portable -y --no-progress
+      - uses: actions/checkout@v2.2.0
+      - name: Pull latest commits
+        run: git pull
+      - name: Validate Issue
+        run: |
+          Import-Module "${{ github.workspace }}\scripts\validation.psm1"
+          if ("${{ github.event.comment.body }}" -match "^/recheck") {
+            Test-NewIssue -commentId ${{ github.event.comment.id }} -repository "${{ github.event.repository.full_name }}"
+          } else {
+            Test-NewIssue -issueNumber ${{ github.event.issue.number }} -repository "${{ github.event.repository.full_name }}"
+          }
