@@ -14,6 +14,8 @@ function Invoke-Commenting {
         [Parameter(Mandatory = $true)]
         [int]$issueNumber,
         [Parameter(Mandatory = $true)]
+        [string]$repository,
+        [Parameter(Mandatory = $true)]
         $commentBody
     )
 
@@ -28,6 +30,6 @@ function Invoke-Commenting {
         $comment | Out-File "$PSScriptRoot/../../../comment.txt" -Encoding utf8NoBOM
     }
     else {
-        Submit-Comment -issueNumber $issueNumber -commentBody $commentBody
+        Submit-Comment -issueNumber $issueNumber -repository $repository -commentBody $commentBody
     }
 }
