@@ -17,11 +17,12 @@ NOTE: Keep in mind we have an etiquette regarding communication that we expect f
 PLEASE REMOVE ALL COMMENTS ONCE YOU HAVE READ THEM.
 
 -->
+
 ## Checklist
 
 - [ ] The package I am requesting does not already exist on https://chocolatey.org/packages;
 - [ ] There is no open issue for this package;
-- [ ] The issue title starts 'RFP - ';
+- [ ] The issue title starts with 'RFP - ';
 - [ ] The download URL is public and not locked behind a paywall / login;
 
 ## Package Details
