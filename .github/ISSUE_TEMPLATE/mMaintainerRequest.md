@@ -10,7 +10,8 @@ If you have followed the Package Triage Process above and want to request to bec
 
 If you have followed the Package Triage Process above and do not want to request to become the maintainer of a package that you DO NOT MAINTAIN, please continue.
 
-Please ensure the issue title starts with 'RFM - ' - for example 'RFM - Adobe Reader'
+Please ensure the issue title starts with 'RFM - ' - for example 'RFM - adobe-reader'
+Please also ensure that the issue title matches the identifier of the package.
 
 Please ensure you have the package URL from https://chocolatey.org/packages before continuing.
 
@@ -18,8 +19,14 @@ NOTE: Keep in mind we have an etiquette regarding communication that we expect f
 
 PLEASE REMOVE ALL COMMENTS ONCE YOU HAVE READ THEM.
 
+Please remove the 'Current Maintainer' section if you are not the current maintainer of the package,
+otherwise if you are the current maintainer of the package please remove the 'I DON'T Want To Become The Maintainer' section.
+
 -->
+
 ## Current Maintainer
+
+<!-- If you are not confirmed as a known maintainer, you may be asked to take additional steps to confirm your user account -->
 
 - [ ] I am the maintainer of the package and wish to pass it to someone else;
 
@@ -34,8 +41,13 @@ PLEASE REMOVE ALL COMMENTS ONCE YOU HAVE READ THEM.
 
 ## Existing Package Details
 
+<!-- You may leave the URLs empty as long as the issue title matches the identifier of the package -->
+
 Package URL:
 Package source URL:
+
 <!-- please remove the following section if you are the current maintainer of the package, otherwise fill out the details -->
+<!-- Please also ensure that the date the maintainer was contacted is using the ISO 8601 standard (YYYY-MM-DD) -->
+
 Date the maintainer was contacted:
 How the maintainer was contacted:
