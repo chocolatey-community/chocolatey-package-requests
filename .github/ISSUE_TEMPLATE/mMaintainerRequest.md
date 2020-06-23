@@ -47,7 +47,6 @@ Package URL:
 Package source URL:
 
 <!-- please remove the following section if you are the current maintainer of the package, otherwise fill out the details -->
-<!-- Please also ensure that the date the maintainer was contacted is using the ISO 8601 standard (YYYY-MM-DD) -->
 
-Date the maintainer was contacted:
+Date the maintainer was contacted (in YYYY-MM-DD):
 How the maintainer was contacted:
