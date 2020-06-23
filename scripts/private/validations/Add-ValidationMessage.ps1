@@ -1,4 +1,4 @@
-<#
+﻿<#
 .SYNOPSIS
     Add a single validation message to the validation data storage.
 .PARAMETER validationData

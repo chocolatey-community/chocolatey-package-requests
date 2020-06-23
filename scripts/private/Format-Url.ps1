@@ -1,4 +1,4 @@
-<#
+﻿<#
 .SYNOPSIS
     Formats the specified url using the specified parameters hashtable
 .PARAMETER url
@@ -18,7 +18,7 @@ function Format-Url() {
     $newUrl = ""
 
     $insideQuote = $false
-    $lastIndex = 0 
+    $lastIndex = 0
     $char = ''
     $checkComma = $true
     while ($lastIndex -ge 0) {
@@ -34,7 +34,7 @@ function Format-Url() {
             $lastIndex = $i + 1
             $checkComma = $true
         }
-        elseif ($insideQuote) { 
+        elseif ($insideQuote) {
             $name = ''
             if ($checkComma -and ($i = $url.IndexOf(',', $lastIndex)) -ge $lastIndex) {
                 $name = $url.Substring($lastIndex, $i - $lastIndex)
@@ -52,8 +52,8 @@ function Format-Url() {
                     $newUrl += $char + $parameters[$name]
                     if ($char -eq '?') { $char = '&' }
                 }
-                
-                if ($i -eq -1) { break; } 
+
+                if ($i -eq -1) { break; }
                 $lastIndex = $i + 1
             }
         }

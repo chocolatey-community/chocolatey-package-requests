@@ -1,4 +1,4 @@
-function Format-Checkboxes() {
+﻿function Format-Checkboxes() {
     param (
         [Parameter(Mandatory = $true)]
         [IssueData]$issueData,

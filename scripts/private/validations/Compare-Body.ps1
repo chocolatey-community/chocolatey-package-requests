@@ -1,4 +1,4 @@
-function Compare-Body {
+﻿function Compare-Body {
     param (
         [Parameter(Mandatory = $true)]
         [IssueData]$issueData,

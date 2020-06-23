@@ -1,4 +1,4 @@
-<#
+﻿<#
 .SYNOPSIS
     Validates the current request using rules for community users
 .PARAMETER issueData

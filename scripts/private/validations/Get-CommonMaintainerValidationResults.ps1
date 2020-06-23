@@ -1,4 +1,4 @@
-<#
+﻿<#
 .SYNOPSIS
     Validates the current request as a maintainer request
 .PARAMETER issueData

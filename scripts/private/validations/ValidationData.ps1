@@ -1,4 +1,4 @@
-enum MessageType {
+﻿enum MessageType {
     None
     Error
     Warning

@@ -1,4 +1,4 @@
-<#
+﻿<#
 .SYNOPSIS
     Disconnect stored chocolatey/github user.
 .PARAMETER commentId
@@ -30,13 +30,13 @@ function Remove-UserConnection() {
         "Loading existing users"
         [array]$existingData = Get-Content -Raw -Encoding utf8NoBOM -Path "$PSScriptRoot/../users.json" | ConvertFrom-Json
     }
-    
+
     if (!$existingData -or $existingData.Count -eq 0) {
         "No users available, exiting..."
         # Set us just ignore everything
         return
     }
-    
+
     "Reiceved comment '$($commentData.body)'"
 
     $statusMessage = ""

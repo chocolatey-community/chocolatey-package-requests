@@ -1,4 +1,4 @@
-<#
+﻿<#
 .SYNOPSIS
     Tests a downloaded file to see if it
     is a valid for the current request.

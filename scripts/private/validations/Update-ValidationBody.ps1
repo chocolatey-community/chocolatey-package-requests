@@ -1,4 +1,4 @@
-<#
+﻿<#
 .SYNOPSIS
     Updates the body for the current validation request.
 .PARAMETER issueData
