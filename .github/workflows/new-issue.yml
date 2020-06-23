@@ -1,0 +1,23 @@
+﻿name: Validate issue
+
+on:
+  issues:
+    types: [opened, edited, reopened]
+
+jobs:
+  validation:
+    if: ${{ github.event.issue.state == 'open' }}
+    runs-on: windows-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - uses: actions/checkout@v2.2.0
+      - name: Install needed packages
+        uses: crazy-max/ghaction-chocolatey@v1.2.2
+        with:
+          args: install trid 7zip.portable -y --no-progress
+      - name: Validate Issue
+        run: |
+          Import-Module "${{ github.workspace }}\scripts\validation.psm1"
+          Test-NewIssue -issueNumber ${{ github.event.issue.number }} -repository "${{ github.event.repository.full_name }}"

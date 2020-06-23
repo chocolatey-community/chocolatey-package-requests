@@ -8,7 +8,8 @@ about: Request a package be created that does not currently exist in the Chocola
 
 * Please ensure there is no existing open package request.
 
-* Please ensure the issue title starts with 'RFP - ' - for example 'RFP - Adobe Reader'
+* Please ensure the issue title starts with 'RFP - ' - for example 'RFP - adobe-reader'
+* Please also ensure the issue title matches the identifier you expect the package should be named.
 
 * Please ensure you have both the Software Project URL and the Software Download URL before continuing.
 
@@ -17,11 +18,12 @@ NOTE: Keep in mind we have an etiquette regarding communication that we expect f
 PLEASE REMOVE ALL COMMENTS ONCE YOU HAVE READ THEM.
 
 -->
+
 ## Checklist
 
 - [ ] The package I am requesting does not already exist on https://chocolatey.org/packages;
 - [ ] There is no open issue for this package;
-- [ ] The issue title starts 'RFP - ';
+- [ ] The issue title starts with 'RFP - ';
 - [ ] The download URL is public and not locked behind a paywall / login;
 
 ## Package Details
