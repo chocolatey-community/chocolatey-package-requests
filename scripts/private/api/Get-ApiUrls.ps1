@@ -7,7 +7,7 @@
     [string]$repository_url;
 }
 
-$apiUrls = $null
+$Script:apiUrls = $null
 
 <#
 .SYNOPSIS
@@ -24,15 +24,15 @@ function Get-ApiUrls {
         [string]$githubToken = $env:GITHUB_TOKEN
     )
 
-    if ($apiUrls) {
-        return $apiUrls
+    if ($Script:apiUrls) {
+        return $Script:apiUrls
     }
 
     $response = Invoke-Api -url "https://api.github.com" -githubToken $githubToken | Select-Object issue_search_url, repository_url
 
-    $apiUrls = [ApiUrls]::new()
-    $apiUrls.issue_search_url = $response.issue_search_url
-    $apiUrls.repository_url = $response.repository_url;
+    $Script:apiUrls = [ApiUrls]::new()
+    $Script:apiUrls.issue_search_url = $response.issue_search_url
+    $Script:apiUrls.repository_url = $response.repository_url;
 
-    return $apiUrls
+    return $Script:apiUrls
 }
