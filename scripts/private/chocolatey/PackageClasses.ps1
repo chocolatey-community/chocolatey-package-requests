@@ -32,3 +32,8 @@ class VersionData {
     [bool]$isNew;
 }
 
+class MaintainerData {
+    [string]$username;
+    [uri]$url;
+    [string]$status;
+}
