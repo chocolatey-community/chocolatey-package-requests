@@ -6,7 +6,6 @@ on:
 
 jobs:
   update:
-    if: ${{ contains(github.event.issue.labels.*.name, format('{0}:{1}', 'Status', ' Available For Maintainer(s)')) }}
     runs-on: ubuntu-latest
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
