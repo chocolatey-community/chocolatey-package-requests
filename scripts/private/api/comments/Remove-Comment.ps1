@@ -1,4 +1,4 @@
-<#
+﻿<#
 .SYNOPSIS
     Removes a single comment from the github repository.
 .PARAMETER commentId

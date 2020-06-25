@@ -20,7 +20,10 @@ function Add-Comment {
         [Parameter(Mandatory = $true)]
         [string]$commentBody,
 
-        [string]$githubToken = $env:GITHUB_TOKEN
+        [string]$githubToken = $env:GITHUB_TOKEN,
+
+        [Parameter(ValueFromRemainingArguments = $true)]
+        [Object[]] $ignoredArguments
     )
 
     $apiUrls = Get-ApiUrls

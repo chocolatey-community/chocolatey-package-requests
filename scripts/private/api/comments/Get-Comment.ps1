@@ -1,4 +1,4 @@
-<#
+﻿<#
 .SYNOPSIS
     Gets a single comment on github
 .DESCRIPTION
@@ -32,7 +32,10 @@ function Get-Comment {
         [Parameter(Mandatory = $true)]
         [string]$repository,
 
-        [string]$githubToken = $env:GITHUB_TOKEN
+        [string]$githubToken = $env:GITHUB_TOKEN,
+
+        [Parameter(ValueFromRemainingArguments = $true)]
+        [Object[]] $ignoredArguments
     )
 
     $apiUrls = Get-ApiUrls
