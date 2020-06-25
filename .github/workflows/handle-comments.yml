@@ -87,8 +87,8 @@ jobs:
         run: |
           Import-Module "${{ github.workspace }}\scripts\validation.psm1"
           if ("${{ github.event.comment.body }}" -match "^/status check") {
-            Update-Issue -issueNumber ${{ github.event.issue.number }} -repository "${{ github.event.repository.full_name }}" -commentUser "${{ github.event.sender.login }}"
+            Update-IssueStatus -issueNumber ${{ github.event.issue.number }} -repository "${{ github.event.repository.full_name }}" -commentUser "${{ github.event.sender.login }}"
           } else {
-            Update-Issue -issueNumber ${{ github.event.issue.number }} -repository "${{ github.event.repository.full_name }}"
+            Update-IssueStatus -issueNumber ${{ github.event.issue.number }} -repository "${{ github.event.repository.full_name }}"
           }
         shell: pwsh
