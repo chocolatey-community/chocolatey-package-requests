@@ -1,4 +1,4 @@
-<#
+﻿<#
 .SYNOPSIS
     Gets a single issue
 .DESCRIPTION
@@ -23,7 +23,10 @@ function Get-Issue {
         [Parameter(Mandatory = $true, ParameterSetName = "number")]
         [string]$repository,
 
-        [string]$githubToken = $env:GITHUB_TOKEN
+        [string]$githubToken = $env:GITHUB_TOKEN,
+
+        [Parameter(ValueFromRemainingArguments = $true)]
+        [Object[]] $ignoredArguments
     )
 
     if ($issueUrl) {

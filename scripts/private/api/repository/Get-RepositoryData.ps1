@@ -1,4 +1,4 @@
-class RepositoryData {
+﻿class RepositoryData {
     [int]$id;
     [string]$name;
     [string]$full_name;

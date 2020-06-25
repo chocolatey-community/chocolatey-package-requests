@@ -1,4 +1,4 @@
-class PermissionData {
+﻿class PermissionData {
     [string]$login;
     [bool]$readAccess;
     [bool]$writeAccess;
