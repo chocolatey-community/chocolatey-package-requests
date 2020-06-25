@@ -18,10 +18,24 @@
     $comment = "This comment is used to track the current status of this request.`n<!-- START PACKAGE LIST -->"
 
     if ($statusData -and $statusData.Count -gt 0) {
-        $statusData | % {
-            $firstVersion = $_.versions | select -First 1
-            if ($firstVersion) {
-                $comment = "$comment`n- [$($_.name)]($($firstVersion.url)) (Status: $($firstVersion.status), Listed: $($firstVersion.listed), Is New: $($firstVersion.isNew), Version: $($firstVersion.version))"
+        $statusData | ForEach-Object {
+            $lowestStatusVersion = $_.versions | Sort-Object {
+                if ($_.status -eq 'waiting') {
+                    0
+                }
+                elseif ($_.status -eq 'submitted') {
+                    1
+                }
+                elseif ($_.status -eq 'approved' -or $_.status -eq 'exempted') {
+                    2
+                }
+                else {
+                    3
+                }
+            }
+            $lowestStatusVersion = $_.versions | Select-Object -First 1
+            if ($lowestStatusVersion) {
+                $comment = "$comment`n- [$($_.name)]($($lowestStatusVersion.url)) (Status: $($lowestStatusVersion.status), Listed: $($lowestStatusVersion.listed), Is New: $($lowestStatusVersion.isNew), Version: $($lowestStatusVersion.version))"
             }
             else {
                 $comment = "$comment`n- **$($_.name)** (Status: Missing)"
