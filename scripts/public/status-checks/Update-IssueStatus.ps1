@@ -104,7 +104,13 @@
         $updatedVersions = Get-UpdatedVersions -packageName $pkgName -existingVersions $pkg.versions
         if (!$updatedVersions -or $updatedVersions.Count -eq 0) {
             if ($pkg.versions -or !$statusLabel) {
-                $issueData.labels | Where-Object { $_ -match "^$([regex]::Escape([StatusLabels]::statusLabelPrefix))" }
+                $label = $issueData.labels | Where-Object { $_ -match "^$([regex]::Escape([StatusLabels]::statusLabelPrefix))" }
+                if ($label -eq [StatusLabels]::availableRequest -and ($assignedUsers -and $assignedUsers.Count -gt 0)) {
+                    $statusLabel
+                }
+                else {
+                    $label
+                }
             }
             else {
                 $statusLabel
