@@ -1,4 +1,4 @@
-<#
+﻿<#
 .SYNOPSIS
     Disconnect stored chocolatey/github user.
 .PARAMETER commentId
@@ -24,12 +24,7 @@ function Remove-UserConnection {
         return
     }
 
-    $existingData = @()
-
-    if (Test-Path "$PSScriptRoot/../users.json") {
-        "Loading existing users"
-        [array]$existingData = Get-Content -Raw -Encoding utf8NoBOM -Path "$PSScriptRoot/../users.json" | ConvertFrom-Json
-    }
+    $existingData = Get-KnownUsers
 
     if (!$existingData -or $existingData.Count -eq 0) {
         "No users available, exiting..."
@@ -104,7 +99,7 @@ function Remove-UserConnection {
     }
     elseif ($statusMessage) {
         "Saving new users data"
-        $existingData | Sort-Object -Property choco, github | ConvertTo-Json -AsArray | Out-File "$PSScriptRoot/../users.json" -Encoding utf8NoBOM
+        Save-KnownUsers -users $existingData
         Invoke-Commenting -issueNumber $issueNumber -repository $repository -commentBody $statusMessage
     }
 }

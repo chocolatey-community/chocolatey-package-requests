@@ -65,23 +65,20 @@ function New-UserConnection {
 
     # TODO validate that current user have permissions to do this command (need write or triage access), unless the user have confirmed
     # the chocolatey username
-    $existingData = @()
+    $existingData = Get-KnownUsers
 
-    if (Test-Path "$PSScriptRoot/../users.json") {
-        [array]$existingData = Get-Content -Raw -Encoding utf8NoBOM -Path "$PSScriptRoot/../users.json" | ConvertFrom-Json
-        $existingData | ForEach-Object {
-            if ($userData | Where-Object github -eq $_.github) {
-                $msg = [WarningMessages]::githubUserConnected -f $_.github
-                $statusMsgs = "${statusMsgs}`n$msg"
-                Write-WarningMessage $msg
-                $userData = $userData | Where-Object github -ne $_.github
-            }
-            if ($userData | Where-Object choco -eq $_.choco) {
-                $msg = [WarningMessages]::chocolateyUserConnected -f $_.choco
-                $statusMsgs = "${statusMsgs}`n$msg"
-                Write-WarningMessage $msg
-                $userData = $userData | Where-Object choco -ne $_.choco
-            }
+    $existingData | ForEach-Object {
+        if ($userData | Where-Object github -eq $_.github) {
+            $msg = [WarningMessages]::githubUserConnected -f $_.github
+            $statusMsgs = "${statusMsgs}`n$msg"
+            Write-WarningMessage $msg
+            $userData = $userData | Where-Object github -ne $_.github
+        }
+        if ($userData | Where-Object choco -eq $_.choco) {
+            $msg = [WarningMessages]::chocolateyUserConnected -f $_.choco
+            $statusMsgs = "${statusMsgs}`n$msg"
+            Write-WarningMessage $msg
+            $userData = $userData | Where-Object choco -ne $_.choco
         }
     }
 
@@ -98,7 +95,8 @@ function New-UserConnection {
         }
     } | Sort-Object -Property choco, github
 
-    $userData + $existingData | Select-Object -Property choco, github | Sort-Object -Property choco, github | ConvertTo-Json -AsArray | Out-File "$PSScriptRoot/../users.json" -Encoding utf8NoBOM
+    Save-KnownUsers -users ($userData + $existingData | Select-Object -Property choco, github)
+
 
     $userData | ForEach-Object {
         $msg = ""
