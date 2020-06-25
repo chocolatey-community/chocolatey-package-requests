@@ -9,16 +9,16 @@
 
     $isUpdate = $PSCmdlet.MyInvocation.InvocationName -eq "Get-UpdatedMaintainers"
 
+    $maintainers = [System.Collections.Generic.List[MaintainerData]]::new()
+
     if (!$packagePage) {
         try {
             $packagePage = Invoke-WebRequest -Uri "https://chocolatey.org/packages/${packageName}" -UseBasicParsing
         }
         catch {
-            return [array]::Empty()
+            return $maintainers
         }
     }
-
-    $maintainers = [System.Collections.Generic.List[MaintainerData]]::new()
 
     [array]$currentMaintainers = $packagePage.Links | `
         ? { $_.href -match "\/profiles/[a-z0-9_\.-]+$" } | `
@@ -32,7 +32,7 @@
             $newMaintainer = [MaintainerData]::new()
             $newMaintainer.username = $maintainer
             $newMaintainer.url = [uri]::new("https://chocolatey.org/profiles/$maintainer")
-            $newMaintainer.status = if ($isUpdate) { "added" } else { "inital" }
+            $newMaintainer.status = if ($isUpdate) { "added" } else { "initial" }
             $maintainers.Add($newMaintainer)
         }
         else {
