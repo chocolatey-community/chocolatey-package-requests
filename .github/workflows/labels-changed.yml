@@ -1,0 +1,24 @@
+name: Status Checks
+
+on:
+  issues:
+    types: [labeled]
+
+jobs:
+  init:
+    if: ${{ contains(github.event.issue.labels.*.name, format('{0}:{1}', 'Status', ' Available For Maintainer(s)')) }}
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - uses: actions/checkout@v2.2.0
+      - name: Status Initialization
+        run: |
+          Import-Module "${{ github.workspace }}/scripts/validation.psm1"
+          $arguments = @{
+            issueNumber = ${{ github.event.issue.number }}
+            repository  = "${{ github.event.repository.full_name }}"
+          }
+          New-IssueStatus @arguments
+        shell: pwsh

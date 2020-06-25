@@ -137,4 +137,11 @@ function Test-NewIssue {
     }
 
     Add-Comment -issueNumber $issueData.number -repository $repository -commentBody $commentBody
+
+    if ($validationData.newLabels.Contains([StatusLabels]::availableRequest)) {
+        # Since github-action bot do not trigger workflows, we call New-Status directly here
+        # we also force it in case as we want the initial status to be what is right now
+        # even if there already is a status comment
+        New-Status -issueNumber $issueData.number -repository $repository -force
+    }
 }
