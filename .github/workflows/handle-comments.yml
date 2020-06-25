@@ -72,21 +72,21 @@ jobs:
           } else {
             Test-NewIssue -issueNumber ${{ github.event.issue.number }} -repository "${{ github.event.repository.full_name }}"
           }
-    status_recheck:
-      if: ${{ (needs.comments.outputs.success == 'True' || startsWith(github.event.comment.body, '/status check') && github.event.issue.state == 'open' }}
-      runs-on: ubuntu-latest
-      needs: comments
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      steps:
-        - uses: actions/checkout@v2.2.0
-        - name: Pull latest commits
-          run: git pull
-        - name: Run status check on Issue
-          run: |
-            Import-Module "${{ github.workspace }}\scripts\validation.psm1"
-            if ("${{ github.event.comment.body }}" -match "^/status check") {
-              Update-Issue -issueNumber ${{ github.event.issue.number }} -repository "${{ github.event.repository.full_name }}" -commentUser "${{ github.event.sender.login }}"
-            } else {
-              Update-Issue -issueNumber ${{ github.event.issue.number }} -repository "${{ github.event.repository.full_name }}"
-            }
+  statusrecheck:
+    if: ${{ (needs.comments.outputs.success == 'True' || startsWith(github.event.comment.body, '/status check')) && github.event.issue.state == 'open' }}
+    runs-on: ubuntu-latest
+    needs: comments
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v2.2.0
+      - name: Pull latest commits
+        run: git pull
+      - name: Run status check on Issue
+        run: |
+          Import-Module "${{ github.workspace }}\scripts\validation.psm1"
+          if ("${{ github.event.comment.body }}" -match "^/status check") {
+            Update-Issue -issueNumber ${{ github.event.issue.number }} -repository "${{ github.event.repository.full_name }}" -commentUser "${{ github.event.sender.login }}"
+          } else {
+            Update-Issue -issueNumber ${{ github.event.issue.number }} -repository "${{ github.event.repository.full_name }}"
+          }
