@@ -51,6 +51,12 @@
     }
     else {
         $assignedUsers = @()
+        # Unsure if we should move it back when it is in a review request as well
+        # maybe even unassigning users should require moving the label to available request
+        # manually even?
+        if ($issueData.labels | ? { $_ -eq [StatusLabels]::inProgressRequest } ) {
+            $statusLabel = [StatusLabels]::availableRequest
+        }
     }
 
 
@@ -81,7 +87,7 @@
         }
         $pkg.maintainers | Where-Object {
             $maint = $_
-            !($currentMaintainers | Where-Object {
+            $maint -and !($currentMaintainers | Where-Object {
                     $_.username -eq $maint.username
                 })
         } | ForEach-Object {
@@ -97,7 +103,12 @@
 
         $updatedVersions = Get-UpdatedVersions -packageName $pkgName -existingVersions $pkg.versions
         if (!$updatedVersions -or $updatedVersions.Count -eq 0) {
-            $issueData.labels | Where-Object { $_ -match "^$([regex]::Escape([StatusLabels]::statusLabelPrefix))" }
+            if ($pkg.versions -or !$statusLabel) {
+                $issueData.labels | Where-Object { $_ -match "^$([regex]::Escape([StatusLabels]::statusLabelPrefix))" }
+            }
+            else {
+                $statusLabel
+            }
         }
 
         $index = 0
