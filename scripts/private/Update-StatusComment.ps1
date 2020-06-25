@@ -19,6 +19,9 @@
 
     if ($statusData -and $statusData.Count -gt 0) {
         $statusData | ForEach-Object {
+            if ($_.name -match ' ') {
+                $_.name = ($_.name -replace ' ', '-').ToLowerInvariant()
+            }
             $lowestStatusVersion = $_.versions | Sort-Object {
                 if ($_.status -eq 'waiting') {
                     0

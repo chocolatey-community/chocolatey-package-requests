@@ -20,7 +20,7 @@
         return
     }
 
-    $packageName = $issueData.title -replace "^RF[PM]\s*-\s*(.*)\s*$", "`${1}"
+    $packageName = ($issueData.title -replace "^RF[PM]\s*-\s*(.*)\s*$", "`${1}" -replace ' ', '-').ToLowerInvariant()
 
     $statusData = @()
 
@@ -53,4 +53,10 @@
     }
 
     Update-StatusComment @arguments
+
+    $expectedTitle = $issueData.title -replace "^(RF[PM]).*$", "`${1} - $packageName"
+
+    if ($expectedTitle -ne $issueData) {
+        Update-Issue @PSBoundParameters -title $expectedTitle
+    }
 }
