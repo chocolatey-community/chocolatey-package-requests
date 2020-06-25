@@ -1,4 +1,4 @@
-class SemanticVersion {
+﻿class SemanticVersion {
     [version]$VersionOnly;
     [string]$Raw;
     [string]$Tag;
@@ -36,4 +36,13 @@ class MaintainerData {
     [string]$username;
     [uri]$url;
     [string]$status;
+}
+
+class PackageData {
+    [string]$name;
+    [MaintainerData[]]$maintainers;
+    [VersionData[]]$versions;
+
+    [Newtonsoft.Json.JsonIgnoreAttribute()]
+    [string]$child;
 }
