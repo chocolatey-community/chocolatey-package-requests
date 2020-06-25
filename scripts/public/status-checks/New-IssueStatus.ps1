@@ -26,13 +26,16 @@
 
     $mainPkg = Get-PackageData -packageName $packageName
 
-    if ($mainPkg) {
-        $statusData = @($mainPkg)
-        if ($mainPkg.child) {
-            $childPkg = Get-PackageData -packageName $mainPkg.child
-            if ($childPkg) {
-                $statusData += @($childPkg)
-            }
+    if (!$mainPkg) {
+        $mainPkg = [PackageData]::new()
+        $mainPkg.name = $packageName
+    }
+
+    $statusData = @($mainPkg)
+    if ($mainPkg.child) {
+        $childPkg = Get-PackageData -packageName $mainPkg.child
+        if ($childPkg) {
+            $statusData += @($childPkg)
         }
     }
 
