@@ -6,7 +6,7 @@
 .PARAMETER validationData
     The validation data storage for the current request
 #>
-function Get-CommunityMaintainerValidationResults() {
+function Get-CommunityMaintainerValidationResults {
     param(
         [Parameter(Mandatory = $true)]
         [IssueData]$issueData,

@@ -8,7 +8,7 @@
 .PARAMETER type
     The type of the validation message
 #>
-function Add-ValidationMessage() {
+function Add-ValidationMessage {
     param(
         [Parameter(Mandatory = $true)]
         [ValidationData]$validationData,

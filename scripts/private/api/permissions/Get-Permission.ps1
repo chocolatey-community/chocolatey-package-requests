@@ -17,7 +17,7 @@
 .OUTPUTS
     Returns the available permissions for the user
 #>
-function Get-Permission() {
+function Get-Permission {
     [OutputType([PermissionData])]
     param(
         [Parameter(Mandatory = $true)]

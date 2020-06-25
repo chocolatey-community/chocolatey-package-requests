@@ -24,7 +24,7 @@
 .OUTPUTS
     The gathered repository data information
 #>
-function Get-RepositoryData() {
+function Get-RepositoryData {
     [OutputType([RepositoryData])]
     param(
         [Parameter(Mandatory = $true, ParameterSetName = "repo+owner")]

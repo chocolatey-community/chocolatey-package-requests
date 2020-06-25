@@ -20,7 +20,7 @@
     Only the first match of the comment is returned
     when content matching is used.
 #>
-function Get-Comment() {
+function Get-Comment {
     [OutputType([CommentData])]
     param(
         [Parameter(Mandatory = $true, ParameterSetName = "known comment")]
@@ -32,7 +32,10 @@ function Get-Comment() {
         [Parameter(Mandatory = $true)]
         [string]$repository,
 
-        [string]$githubToken = $env:GITHUB_TOKEN
+        [string]$githubToken = $env:GITHUB_TOKEN,
+
+        [Parameter(ValueFromRemainingArguments = $true)]
+        [Object[]] $ignoredArguments
     )
 
     $apiUrls = Get-ApiUrls

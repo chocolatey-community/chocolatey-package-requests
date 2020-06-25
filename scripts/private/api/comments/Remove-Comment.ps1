@@ -8,7 +8,7 @@
 .OUTPUTS
     $null
 #>
-function Remove-Comment() {
+function Remove-Comment {
     [OutputType($null)]
     param(
         [Parameter(Mandatory = $true)]

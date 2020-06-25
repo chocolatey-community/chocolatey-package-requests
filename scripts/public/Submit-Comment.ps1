@@ -25,13 +25,16 @@ function Submit-Comment {
         [Parameter(Mandatory = $true)]
         [string]$commentBody,
 
-        [string]$githubToken = $env:GITHUB_TOKEN
+        [string]$githubToken = $env:GITHUB_TOKEN,
+
+        [Parameter(ValueFromRemainingArguments = $true)]
+        [Object[]] $ignoredArguments
     )
 
     if ($commentId) {
-        return Update-Comment -commentId $commentId -repository $repository -commentBody $commentBody -githubToken $githubToken
+        return Update-Comment @PSBoundParameters
     }
     else {
-        return Add-Comment -issueNumber $issueNumber -repository $repository -commentBody $commentBody -githubToken $githubToken
+        return Add-Comment @PSBoundParameters
     }
 }

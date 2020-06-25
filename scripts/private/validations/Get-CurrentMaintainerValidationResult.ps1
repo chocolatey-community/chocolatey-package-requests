@@ -6,7 +6,7 @@
 .PARAMETER validationData
     The validation data storage for the current request
 #>
-function Get-CurrentMaintainerValidationResult() {
+function Get-CurrentMaintainerValidationResult {
     param(
         [Parameter(Mandatory = $true)]
         [IssueData]$issueData,
@@ -15,12 +15,9 @@ function Get-CurrentMaintainerValidationResult() {
     )
 
     $userIsKnownMaintainer = $false
-    if (Test-Path "$PSScriptRoot/../../users.json") {
-        $allStoredUsers = Get-Content "$PSScriptRoot/../../users.json" -Encoding utf8NoBOM | ConvertFrom-Json
-        $storedUser = $allStoredUsers | ? github -eq $issueData.userLogin
-        if ($storedUser) {
-            $userIsKnownMaintainer = $validationData.packageMaintainers | ? { $_ -eq $storedUser.choco }
-        }
+    $storedUser = Get-KnownUser -github $issueData.userLogin
+    if ($storedUser) {
+        $userIsKnownMaintainer = $validationData.packageMaintainers | ? { $_ -eq $storedUser.choco }
     }
 
     $compareData = @{

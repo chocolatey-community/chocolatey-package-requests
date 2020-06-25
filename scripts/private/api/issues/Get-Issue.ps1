@@ -13,7 +13,7 @@
 .OUTPUTS
     The found issue data
 #>
-function Get-Issue() {
+function Get-Issue {
     [OutputType([IssueData])]
     param(
         [Parameter(Mandatory = $true, ParameterSetName = "number")]
@@ -23,7 +23,10 @@ function Get-Issue() {
         [Parameter(Mandatory = $true, ParameterSetName = "number")]
         [string]$repository,
 
-        [string]$githubToken = $env:GITHUB_TOKEN
+        [string]$githubToken = $env:GITHUB_TOKEN,
+
+        [Parameter(ValueFromRemainingArguments = $true)]
+        [Object[]] $ignoredArguments
     )
 
     if ($issueUrl) {

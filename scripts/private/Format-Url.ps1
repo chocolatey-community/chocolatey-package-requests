@@ -8,7 +8,7 @@
 .OUTPUTS
     The formatted Url
 #>
-function Format-Url() {
+function Format-Url {
     param(
         [Parameter(Mandatory = $true)]
         [string]$url,

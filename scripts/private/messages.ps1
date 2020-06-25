@@ -66,6 +66,9 @@ class StatusLabels {
     static [string]$statusLabelPrefix = "Status:"
     static [string]$availableRequest = "Status: Available For Maintainer(s)";
     static [string]$incompleteRequest = "Status: Incomplete Request";
+    static [string]$inProgressRequest = "Status: In Progress"
+    static [string]$publishedRequest = "Status: Published"
+    static [string]$reviewRequest = "Status: Review"
     static [string]$triageRequest = "Status: Triage";
     static [string]$upstreamBlocked = "Blocked Upstream";
 }

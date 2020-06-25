@@ -9,7 +9,7 @@
 .PARAMETER label
     The status label to update to
 #>
-function Update-StatusLabel() {
+function Update-StatusLabel {
     param(
         [Parameter(Mandatory = $true)]
         [ValidationData]$validationData,
