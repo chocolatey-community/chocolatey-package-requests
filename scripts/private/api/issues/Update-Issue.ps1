@@ -1,4 +1,4 @@
-<#
+﻿<#
 .SYNOPSIS
     Updates a single issue
 .DESCRIPTION
@@ -65,14 +65,14 @@ function Update-Issue {
     if ($description) {
         $content['body'] = $description
     }
-    if ($assignees) {
+    if ($null -ne $assignees) {
         $content['assignees'] = $assignees
     }
     if ($labels) {
         $content['labels'] = $labels
     }
     if ($state -ne 'None' -and $state -ne $existingIssue.state) {
-        $content['state'] = $state
+        $content["state"] = $state.ToString().ToLowerInvariant()
     }
 
     $response = Invoke-Api -url $existingIssue.url -parameters @{ number = $issueNumber } -method "PATCH" -content $content -githubToken $githubToken
