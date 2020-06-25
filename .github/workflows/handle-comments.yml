@@ -72,6 +72,7 @@ jobs:
           } else {
             Test-NewIssue -issueNumber ${{ github.event.issue.number }} -repository "${{ github.event.repository.full_name }}"
           }
+        shell: pwsh
   statusrecheck:
     if: ${{ (needs.comments.outputs.success == 'True' || startsWith(github.event.comment.body, '/status check')) && github.event.issue.state == 'open' }}
     runs-on: ubuntu-latest
@@ -90,3 +91,4 @@ jobs:
           } else {
             Update-Issue -issueNumber ${{ github.event.issue.number }} -repository "${{ github.event.repository.full_name }}"
           }
+        shell: pwsh
