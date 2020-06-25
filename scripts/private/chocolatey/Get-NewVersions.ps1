@@ -31,12 +31,12 @@
             elseif (!$foundVersion -or $isUpdate) {
                 $versionData = Get-VersionData -packageName $packageName -version $version
                 if ($isUpdate) {
-                    $index = $existingVersions.IndexOf($foundVersion)
-                    $existingVersions[$index] = $versionData
+                    $versionData.isUpdated = $true
                     $versions.Add($versionData)
                 }
                 elseif ($foundVersion -and $foundVersion.status -ne $versionData.status) {
                     $versionData.isNew = !$isUpdate
+                    $versionData.isUpdated = $true
                     $versions.Add($versionData)
                 }
             }

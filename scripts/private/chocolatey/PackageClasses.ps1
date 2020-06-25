@@ -30,6 +30,7 @@ class VersionData {
     [string]$status;
     [bool]$listed;
     [bool]$isNew;
+    [bool]$isUpdated;
 }
 
 class MaintainerData {
