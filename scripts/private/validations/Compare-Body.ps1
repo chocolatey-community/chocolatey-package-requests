@@ -9,7 +9,7 @@
     )
 
     if ($validationData.newBody) {
-        $res = $validationData.newBody -match $re | Out-Null
+        $res = $validationData.newBody -match $re
     }
     else {
         $res = $issueData.body -match $re
