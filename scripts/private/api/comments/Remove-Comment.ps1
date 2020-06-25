@@ -1,4 +1,4 @@
-﻿<#
+<#
 .SYNOPSIS
     Removes a single comment from the github repository.
 .PARAMETER commentId
@@ -8,7 +8,7 @@
 .OUTPUTS
     $null
 #>
-function Remove-Comment() {
+function Remove-Comment {
     [OutputType($null)]
     param(
         [Parameter(Mandatory = $true)]

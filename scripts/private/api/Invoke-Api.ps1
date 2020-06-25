@@ -21,7 +21,7 @@
 .OUTPUTS
     The result of the request.
 #>
-function Invoke-Api() {
+function Invoke-Api {
     [OutputType([hashtable])]
     param(
         [Parameter(Mandatory = $true)]

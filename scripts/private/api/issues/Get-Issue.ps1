@@ -1,4 +1,4 @@
-﻿<#
+<#
 .SYNOPSIS
     Gets a single issue
 .DESCRIPTION
@@ -13,7 +13,7 @@
 .OUTPUTS
     The found issue data
 #>
-function Get-Issue() {
+function Get-Issue {
     [OutputType([IssueData])]
     param(
         [Parameter(Mandatory = $true, ParameterSetName = "number")]

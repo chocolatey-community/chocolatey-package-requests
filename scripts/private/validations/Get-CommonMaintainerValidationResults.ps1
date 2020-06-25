@@ -1,4 +1,4 @@
-﻿<#
+<#
 .SYNOPSIS
     Validates the current request as a maintainer request
 .PARAMETER issueData
@@ -8,7 +8,7 @@
 .OUTPUTS
     Returns $false if validator should abort further processing, otherwise $true
 #>
-function Get-CommonMaintainerValidationResult() {
+function Get-CommonMaintainerValidationResult {
     param(
         [Parameter(Mandatory = $true)]
         [IssueData]$issueData,

@@ -1,4 +1,4 @@
-﻿<#
+<#
 .SYNOPSIS
     Updates a single issue
 .DESCRIPTION
@@ -26,7 +26,7 @@
 .OUTPUTS
     Returns the updated issue data
 #>
-function Update-Issue() {
+function Update-Issue {
     [OutputType([IssueData])]
     param(
         [Parameter(Mandatory = $true, ParameterSetName = "number")]

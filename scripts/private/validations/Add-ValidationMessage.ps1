@@ -1,4 +1,4 @@
-﻿<#
+<#
 .SYNOPSIS
     Add a single validation message to the validation data storage.
 .PARAMETER validationData
@@ -8,7 +8,7 @@
 .PARAMETER type
     The type of the validation message
 #>
-function Add-ValidationMessage() {
+function Add-ValidationMessage {
     param(
         [Parameter(Mandatory = $true)]
         [ValidationData]$validationData,

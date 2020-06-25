@@ -1,4 +1,4 @@
-﻿<#
+<#
 .SYNOPSIS
     Disconnect stored chocolatey/github user.
 .PARAMETER commentId
@@ -7,7 +7,7 @@
 .PARAMETER repository
     The repository where this comment is located in.
 #>
-function Remove-UserConnection() {
+function Remove-UserConnection {
     param(
         [Parameter(Mandatory = $true)]
         [int]$commentId,

@@ -1,4 +1,4 @@
-﻿<#
+<#
 .SYNOPSIS
     Validates the current request as a new package request
 .PARAMETER issueData
@@ -6,7 +6,7 @@
 .PARAMETER validationData
     The validation data storage for the current request
 #>
-function Get-NewPackageValidationResult() {
+function Get-NewPackageValidationResult {
     param(
         [Parameter(Mandatory = $true)]
         [IssueData]$issueData,

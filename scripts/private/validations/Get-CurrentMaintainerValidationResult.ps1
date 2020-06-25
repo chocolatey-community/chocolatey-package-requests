@@ -1,4 +1,4 @@
-﻿<#
+<#
 .SYNOPSIS
     Validates the current request using current maintainer rules
 .PARAMETER issueData
@@ -6,7 +6,7 @@
 .PARAMETER validationData
     The validation data storage for the current request
 #>
-function Get-CurrentMaintainerValidationResult() {
+function Get-CurrentMaintainerValidationResult {
     param(
         [Parameter(Mandatory = $true)]
         [IssueData]$issueData,

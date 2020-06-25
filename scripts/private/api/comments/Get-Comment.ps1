@@ -1,4 +1,4 @@
-﻿<#
+<#
 .SYNOPSIS
     Gets a single comment on github
 .DESCRIPTION
@@ -20,7 +20,7 @@
     Only the first match of the comment is returned
     when content matching is used.
 #>
-function Get-Comment() {
+function Get-Comment {
     [OutputType([CommentData])]
     param(
         [Parameter(Mandatory = $true, ParameterSetName = "known comment")]

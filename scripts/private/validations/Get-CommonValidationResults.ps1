@@ -1,4 +1,4 @@
-﻿<#
+<#
 .SYNOPSIS
     Validates the current request using common rules
 .PARAMETER issueData
@@ -6,7 +6,7 @@
 .PARAMETER validationData
     The validation data storage for the current request
 #>
-function Get-CommonValidationResults() {
+function Get-CommonValidationResults {
     param(
         [Parameter(Mandatory = $true)]
         [IssueData]$issueData,
