@@ -42,8 +42,10 @@ function Test-NewIssue {
     if ($statusLabels | Where-Object { -not ($_ -eq [StatusLabels]::triageRequest -or $_ -eq [StatusLabels]::incompleteRequest) }) {
         Write-Host ([StatusMessages]::issueHaveBeenLabeled)
 
-        $msg = [PermissionMessages]::issueLabelAssigned -f $commentData.userLogin, ([StatusLabels]::triageRequest), ([StatusLabels]::incompleteRequest)
-        Submit-Comment -issueNumber $issueData.number -repository $repository -commentBody $msg
+        if ($commentId) {
+            $msg = [PermissionMessages]::issueLabelAssigned -f $commentData.userLogin, ([StatusLabels]::triageRequest), ([StatusLabels]::incompleteRequest)
+            Submit-Comment -issueNumber $issueData.number -repository $repository -commentBody $msg
+        }
         return
     }
     $validationData = [ValidationData]::new()
