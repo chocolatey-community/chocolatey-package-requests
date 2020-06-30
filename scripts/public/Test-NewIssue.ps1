@@ -17,7 +17,8 @@ function Test-NewIssue {
         [int]$issueNumber,
         [Parameter(Mandatory = $true, ParameterSetName = "comment")]
         [int]$commentId,
-        [string]$repository = $env:GITHUB_REPOSITORY
+        [string]$repository = $env:GITHUB_REPOSITORY,
+        [switch]$DryRun
     )
 
     if ($commentId) {
@@ -33,7 +34,13 @@ function Test-NewIssue {
 
         if ($commentId) {
             $msg = [PermissionMessages]::issueUserAssigned -f $commentData.userLogin
-            Submit-Comment -issueNumber $issueData.number -repository $repository -commentBody $msg
+            if ($DryRun) {
+                "Would submit the following comment to issue #$($issueData.number)"
+                "$msg"
+            }
+            else {
+                Submit-Comment -issueNumber $issueData.number -repository $repository -commentBody $msg
+            }
         }
         return
     }
@@ -44,7 +51,13 @@ function Test-NewIssue {
 
         if ($commentId) {
             $msg = [PermissionMessages]::issueLabelAssigned -f $commentData.userLogin, ([StatusLabels]::triageRequest), ([StatusLabels]::incompleteRequest)
-            Submit-Comment -issueNumber $issueData.number -repository $repository -commentBody $msg
+            if ($DryRun) {
+                "Would submit the following comment to issue #$($issueData.number)"
+                "$msg"
+            }
+            else {
+                Submit-Comment -issueNumber $issueData.number -repository $repository -commentBody $msg
+            }
         }
         return
     }
@@ -91,7 +104,12 @@ function Test-NewIssue {
         $arguments["title"] = $validationData.newTitle
     }
 
-    $issueData = Update-Issue @arguments
+    if ($DryRun) {
+        "Would update the issue #$($issueNumber) with new data."
+    }
+    else {
+        $issueData = Update-Issue @arguments
+    }
 
 
     $commentBody = [ValidationMessages]::commentBodyDetection + "`n" + [ValidationMessages]::commentBodyHeader
@@ -135,8 +153,19 @@ function Test-NewIssue {
     $commentsData = Get-Comment -issueNumber $issueData.number -contentMatch ([regex]::Escape([ValidationMessages]::commentBodyDetection)) -repository $repository
 
     if ($commentsData) {
-        Remove-Comment $commentsData.id -repository $repository
+        if ($DryRun) {
+            "Would remove comment with id $($commentsData.id)"
+        }
+        else {
+            Remove-Comment $commentsData.id -repository $repository
+        }
     }
 
-    Add-Comment -issueNumber $issueData.number -repository $repository -commentBody $commentBody
+    if ($DryRun) {
+        "Would create new comment on issue #$($issueData.number) with the following body:"
+        "$commentBody"
+    }
+    else {
+        Add-Comment -issueNumber $issueData.number -repository $repository -commentBody $commentBody
+    }
 }
