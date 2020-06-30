@@ -71,7 +71,7 @@ function Get-CommonValidationResults() {
 
         $validationData.packageFound = $true
         $validationData.packageSourceUrl = $chocolateyPage.Links | Where-Object title -match "^See the package source\." | Select-Object -First 1 -ExpandProperty href
-        $validationData.packageMaintainers = $chocolateyPage.Links | Where-Object href -match "\/profiles\/" | Select-Object -ExpandProperty title -Unique | Sort-Object
+        $validationData.packageMaintainers = $chocolateyPage.Links | Where-Object { $_.href -match "\/profiles\/" -and $_.title } | Select-Object -ExpandProperty title -Unique | Sort-Object
     }
     catch {
         $validationData.packageFound = $false
