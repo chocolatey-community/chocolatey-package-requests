@@ -46,7 +46,7 @@ function Get-CommunityMaintainerValidationResults() {
     # TODO Validate contact date being larger than 7 days (maybe)
 
     Write-Host ([StatusCheckMessages]::checkUserSuppliedMaintainerContactMethod)
-    $re = "How the maintainer was contacted\s*:\s*[a-z]"
+    $re = "How the maintainer was contacted\s*:\s*[\S]+[a-z]"
     if (!(Compare-Body @compareData -re $re)) {
         Write-WarningMessage ([WarningMessages]::userNotSpecifiedContactMethodOfMaintainer)
         Update-StatusLabel -validationData $validationData -label ([StatusLabels]::incompleteRequest)
