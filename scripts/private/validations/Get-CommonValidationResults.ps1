@@ -14,10 +14,12 @@ function Get-CommonValidationResults() {
         [ValidationData]$validationData
     )
 
-    $title = $issueData.title -replace "^RFP\s*[\-:]\s*", "RFP - " -replace "^RFM\s*[\-:]\s*", "RFM - "
-    $result = $title -match "^RF([PM])\s*-\s*(.+)$"
+    $packageName = $issueData.title -replace "^[^\-:]*[-:]\s*(.+)$", "`$1"
+    $packageName = ($packageName -replace " ", "-").ToLowerInvariant()
+    $requestType = ($issueData.title -replace "^(RF[MP])\s*[-:].*", "`$1").ToUpperInvariant()
+    $title = "{0} - {1}" -f $requestType, $packageName
 
-    if (!$result) {
+    if ($requestType.Length -ne 3 -or ($requestType -notmatch "^RF[PM]$")) {
         Write-WarningMessage ([WarningMessages]::userNotSpecifiedCorrectRequestTitle)
         Update-StatusLabel -validationData $validationData -label ([StatusLabels]::incompleteRequest)
         Add-ValidationMessage -validationData $validationData -message ([ValidationMessages]::useCorrectTitleError) -type ([MessageType]::Error)
@@ -26,8 +28,8 @@ function Get-CommonValidationResults() {
     if ($issueData.title -cne $title) {
         $validationData.newTitle = $title
     }
-    $validationData.isNewPackageRequest = $Matches[1] -eq 'P'
-    $validationData.packageName = $Matches[2]
+    $validationData.isNewPackageRequest = $requestType -eq "RFP"
+    $validationData.packageName = $packageName
 
     if (!$issueData.body) {
         Write-WarningMessage ([WarningMessages]::userRequestedIssueWithEmptyBody)
