@@ -36,7 +36,7 @@ function Get-CommunityMaintainerValidationResults() {
     }
 
     Write-Host ([StatusCheckMessages]::checkUserSuppliedMaintainerContactDate)
-    $re = "Date the maintainer was contacted\s*\(in YYYY-MM-DD\)\s*:\s(\d{4}-\d{2}-\d{2})"
+    $re = "Date the maintainer was contacted\s*(?:\(in YYYY-MM-DD\))?\s*:\s(\d{4}-\d{2}-\d{2})"
     if (!(Compare-Body @compareData -re $re)) {
         Write-WarningMessage ([WarningMessages]::userNotSpecifiedContactDateOfMaintainer)
         Update-StatusLabel -validationData $validationData -label ([StatusLabels]::incompleteRequest)
