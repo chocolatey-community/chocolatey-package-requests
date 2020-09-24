@@ -97,10 +97,10 @@ function Test-NewIssue {
 
     $arguments["labels"] = [array]($existingLabels + $validationData.newLabels) | Select-Object -Unique
 
-    if ($validationData.newBody -and $validationData.newBody -cne $issueData.body) {
+    if (!([string]::IsNullOrWhiteSpace($validationData.newBody)) -and ($validationData.newBody -cne $issueData.body)) {
         $arguments["description"] = $validationData.newBody
     }
-    if ($validationData.newTitle -and $validationData.newTitle -cne $issueData.title) {
+    if (!([string]::IsNullOrWhiteSpace($validationData.newTitle)) -and ($validationData.newTitle -cne $issueData.title)) {
         $arguments["title"] = $validationData.newTitle
     }
 
