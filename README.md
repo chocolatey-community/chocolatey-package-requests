@@ -24,6 +24,8 @@ Search the [Chocolatey Community Repository](https://chocolatey.org/packages) to
 
 If you are the current maintainer of the package then create a new request using "RFM - packagename". If you are not the current maintainer then please make sure you have read the [Package Triage Process](https://chocolatey.org/docs/package-triage-process#package-is-outdated) and follow the guidelines there.
 
+**NOTE**: Once a RFM request is accepted into the repository, any existing trusted status on chocolatey.org will be removed by the repository maintainers accepting the request.
+
 ### How To Create Packages for a Request
 
 * Determine there is a package you can pick up.
