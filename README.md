@@ -35,14 +35,14 @@ When you pick up a request for either a new package or a new maintainer, remembe
 A comment from the one picking up a request is expected to be done at the following stages of a request:
 
 1. When you start working on the package, or get added as a new maintainer (issue will then be labeled as `Status: In Progress` and you will be assigned to the issue).
-2. When the new package or updated version is pushed to chocolatey (issue will then be moved to `Status: Review`).
-3. When the package is approved by a chocolatey moderator (issue will then be closed and labeled with `Status: Published`).
+2. When the new package or updated version is pushed to chocolatey.org (issue will then be moved to `Status: Review`).
+3. When the package is approved by a Chocolatey moderator (issue will then be closed and labeled with `Status: Published`).
 
 A maintainer of the repository may at times add a comment on the issue asking for the status of the request when the above have not been followed.
-When this happens, please respond on the issue with the current status of the request as soon as possible.
-Failure to respond within 7-8 days after the comment will be cause the maintainer that picked up the request to be considered unresponsive, and may result in the request being moved back to `Status: Available for Maintainer(s)`.
+When this happens, you will have 7 days to respond on the issue with the current status of the request.
+If there is no response within these 7 days, the request will be opened up to other maintainers and marked with `Status: Available for Maintainer(s)`.
 
-**Note**: If you are taking over maintenance for a package, you also need to be added ot the list of maintainers. Use the contact admins link from the package page, point to the particular issue in this repository, and ask to be added.
+**Note**: If you are taking over maintenance for a package, you also need to be added to the list of maintainers. Use the contact admins link from the package page, point to the particular issue in this repository, and ask to be added.
 
 ### Package Request Status
 
