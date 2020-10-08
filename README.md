@@ -24,6 +24,8 @@ Search the [Chocolatey Community Repository](https://chocolatey.org/packages) to
 
 If you are the current maintainer of the package then create a new request using "RFM - packagename". If you are not the current maintainer then please make sure you have read the [Package Triage Process](https://chocolatey.org/docs/package-triage-process#package-is-outdated) and follow the guidelines there.
 
+**NOTE**: Once a RFM request is accepted into the repository, any existing trusted status on chocolatey.org will be removed by the repository maintainers accepting the request.
+
 ### How To Create Packages for a Request
 
 * Determine there is a package you can pick up.
@@ -31,7 +33,18 @@ If you are the current maintainer of the package then create a new request using
 * The issue will get labelled as assigned, awaiting approval
 * When the package gets approved by the moderation process, close the issue (or ask for it to be closed).
 
-**Note**: If you are taking over maintenance for a package, you also need to be added ot the list of maintainers. Use the contact admins link from the package page, point to the particular issue in this repository, and ask to be added.
+When you pick up a request for either a new package or a new maintainer, remember to keep the maintainers of this repository updated on the current status of the work being done.
+A comment from the one picking up a request is expected to be done at the following stages of a request:
+
+1. When you start working on the package, or get added as a new maintainer (issue will then be labeled as `Status: In Progress` and you will be assigned to the issue).
+2. When the new package or updated version is pushed to chocolatey.org (issue will then be moved to `Status: Review`).
+3. When the package is approved by a Chocolatey moderator (issue will then be closed and labeled with `Status: Published`).
+
+A maintainer of the repository may at times add a comment on the issue asking for the status of the request when the above have not been followed.
+When this happens, you will have 7 days to respond on the issue with the current status of the request.
+If there is no response within these 7 days, the request will be opened up to other maintainers and marked with `Status: Available for Maintainer(s)`.
+
+**Note**: If you are taking over maintenance for a package, you also need to be added to the list of maintainers. Use the **Contact Site Admins** link on the package page, point to the particular issue in this repository, and ask to be added.
 
 ### Package Request Status
 
