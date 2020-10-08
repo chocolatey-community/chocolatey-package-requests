@@ -44,7 +44,7 @@ A maintainer of the repository may at times add a comment on the issue asking fo
 When this happens, you will have 7 days to respond on the issue with the current status of the request.
 If there is no response within these 7 days, the request will be opened up to other maintainers and marked with `Status: Available for Maintainer(s)`.
 
-**Note**: If you are taking over maintenance for a package, you also need to be added to the list of maintainers. Use the contact admins link from the package page, point to the particular issue in this repository, and ask to be added.
+**Note**: If you are taking over maintenance for a package, you also need to be added to the list of maintainers. Use the **Contact Site Admins** link on the package page, point to the particular issue in this repository, and ask to be added.
 
 ### Package Request Status
 
