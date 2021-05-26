@@ -45,7 +45,7 @@ function New-UserConnection {
         return
     }
 
-    $userData += $commentData.body -split "\r?\n" | Select-String "^/(?:attach|confirm)\s+([a-z0-9_-]+)\s*([\n\r]|$)" -AllMatches | ForEach-Object Matches | ForEach-Object {
+    $userData += $commentData.body -split "\r?\n" | Select-String "^/(?:attach|confirm)\s+([a-z0-9_\.-]+)\s*([\n\r]|$)" -AllMatches | ForEach-Object Matches | ForEach-Object {
         return @{
             github = $permissionData.login
             choco  = $_.Groups[1].Value
