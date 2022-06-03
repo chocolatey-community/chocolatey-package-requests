@@ -4,7 +4,7 @@ about: Request a package be created that does not currently exist in the Chocola
 ---
 
 <!--
-* Please ensure the package does not already exist in the Chocolatey Community Repository - https://chocolatey.org/packages - by using a relevant search.
+* Please ensure the package does not already exist in the Chocolatey Community Repository - https://community.chocolatey.org/packages - by using a relevant search.
 
 * Please ensure there is no existing open package request.
 
@@ -21,7 +21,7 @@ PLEASE REMOVE ALL COMMENTS ONCE YOU HAVE READ THEM.
 
 ## Checklist
 
-- [ ] The package I am requesting does not already exist on https://chocolatey.org/packages;
+- [ ] The package I am requesting does not already exist on https://community.chocolatey.org/packages;
 - [ ] There is no open issue for this package;
 - [ ] The issue title starts with 'RFP - ';
 - [ ] The download URL is public and not locked behind a paywall / login;

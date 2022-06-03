@@ -50,7 +50,7 @@ function Get-CommonMaintainerValidationResult() {
         Write-Host ([StatusMessages]::userNotProvidedPackageUrl)
         $re = "(?smi)^\s*(Package URL)\s*:[^\r\n]*" # We want to replace the whole line
         if ((Compare-Body @compareData -re $re) -and $validationData.packageFound) {
-            Update-ValidationBody -issueData $issueData -validationData $validationData -replacement $re, "`${1}: https://chocolatey.org/packages/$($validationData.packageName)"
+            Update-ValidationBody -issueData $issueData -validationData $validationData -replacement $re, "`${1}: https://community.chocolatey.org/packages/$($validationData.packageName)"
         }
         else {
             Write-WarningMessage ([WarningMessages]::templateMissingPackageUrlAndNoPackageMatchesTitle)

@@ -15,7 +15,7 @@ class PermissionMessages {
 class StatusCheckMessages {
     static [string]$checkingExistingValidationComment = "Checking for comments already submitted by the package request validator...";
     static [string]$checkingForExistingIssues = "Checking for other issues matching {0}"
-    static [string]$checkingUserMarkedChocolateySearched = "Checking if user have searched for packages on chocolatey.org";
+    static [string]$checkingUserMarkedChocolateySearched = "Checking if user have searched for packages on community.chocolatey.org";
     static [string]$checkingUserMarkedDownloadUrlPublic = "Checking if user have marked the download URL as being public and not bedind a paywall";
     static [string]$checkingUserProvidedDirectDownloadUrl = "Checking if the user have provided a direct download URL";
     static [string]$checkingUserProvidedSoftwareProjectUrl = "Checking if user have provided a URL to the software project";
@@ -24,7 +24,7 @@ class StatusCheckMessages {
     static [string]$checkMarkedAsCurrentMaintainer = "Checking if the user have selected that they are the current maintainer";
     static [string]$checkMarkedAsFollowingTriageProcess = "Checking if user have marked that they have followed the Package Triage Process";
     static [string]$checkMarkedAsSearchedForIssues = "Checking if the user have marked that they have checked for existing issues";
-    static [string]$checkPackageExistOnChocolatey = "Checking chocolatey.org for an existing package named {0}";
+    static [string]$checkPackageExistOnChocolatey = "Checking community.chocolatey.org for an existing package named {0}";
     static [string]$checkUserMarkedWithCorrectRFMTitle = "Checking if the user have marked the issue with RFM";
     static [string]$checkUserMarkedWithCorrectRFPTitle = "Checking if the user have marked the issue with RFP";
     static [string]$checkUserProvidedPackageSourceUrl = "Checking if the user have added the url to the package source";
@@ -42,9 +42,9 @@ class StatusCheckMessages {
 
 class StatusMessages {
     static [string]$bodyNotMatchingUpdating = "Body do not match with recommendation, updating...";
-    static [string]$chocolateyUserConfirmed = "@{0} thank you for confirming your chocolatey username. You are now connected to the [{1}](https://chocolatey.org/profiles/{1}) chocolatey user.";
-    static [string]$chocolateyUserConnected = "Chocolatey user [{0}](https://chocolatey.org/packages/{0}) has been connected to the github user @{1}";
-    static [string]$chocolateyUserDisconnected = "Connected chocolatey user [{0}](https://chocolatey.org/profiles/{0}) have been removed.";
+    static [string]$chocolateyUserConfirmed = "@{0} thank you for confirming your chocolatey username. You are now connected to the [{1}](https://community.chocolatey.org/profiles/{1}) chocolatey user.";
+    static [string]$chocolateyUserConnected = "Chocolatey user [{0}](https://community.chocolatey.org/packages/{0}) has been connected to the github user @{1}";
+    static [string]$chocolateyUserDisconnected = "Connected chocolatey user [{0}](https://community.chocolatey.org/profiles/{0}) have been removed.";
     static [string]$githubUserDisconnected = "Connected github user @{0} have been removed";
     static [string]$issueHaveBeenLabeled = "The issue have been labeled with a status label, thus no longer needing validation";
     static [string]$packageFoundOnChocolatey = "Package found, checking if package is listed.";
@@ -91,8 +91,8 @@ class ValidationMessages {
 
     static [string]$commentBodyFooter = "`n`n**Please note that this check is currently in alpha, and may not be able to detect everything correctly.`nHumans may also be able to detect other issues with this request.**";
     static [string]$invalidRequestType = "We could not parse the request type. Please ensure that the issue title starts with RFM or RFP and is in the following format: ``RF[MP] - package-id``";
-    static [string]$packageExistsError = "Is this the package that you are requesting: https://chocolatey.org/packages/{0}? If this is not the package you are looking for, please update the issue title to something else that won't conflict with existing packages on chocolatey.org.";
-    static [string]$packageExistsUnlistedError = "Is this the package you are requesting: https://chocolatey.org/packages/{0}. There is no listed versions, which means it do not show up during a search on chocolatey.org. If this is not the package you are looking for, please update the issue title to something else that won't conflict with existing packages on chocolatey.org.";
+    static [string]$packageExistsError = "Is this the package that you are requesting: https://community.chocolatey.org/packages/{0}? If this is not the package you are looking for, please update the issue title to something else that won't conflict with existing packages on community.chocolatey.org.";
+    static [string]$packageExistsUnlistedError = "Is this the package you are requesting: https://community.chocolatey.org/packages/{0}. There is no listed versions, which means it do not show up during a search on community.chocolatey.org. If this is not the package you are looking for, please update the issue title to something else that won't conflict with existing packages on community.chocolatey.org.";
     static [string]$packageNotFoundError = "We could not find a package named {0}. Please verify that the issue title contains the id of the package, with the correct formatting.";
 
     # General validation messages
@@ -101,7 +101,7 @@ class ValidationMessages {
 
     # New package request validation messages
 
-    static [string]$chocolateySearchNotMarkedError = "We could not detect that you have marked that you have tried to search for the package on chocolatey.org yet. If you have not tried to search for the package, please do so now; Otherwise update the issue.";
+    static [string]$chocolateySearchNotMarkedError = "We could not detect that you have marked that you have tried to search for the package on community.chocolatey.org yet. If you have not tried to search for the package, please do so now; Otherwise update the issue.";
     static [string]$downloadUrlPublicMarkedError = "We could not detect that you have marked the download URL as public and it is not hidden behind a paywall. Please note that if the download is private, or if it is hidden behind a paywall, then a package can not be created by the community. The only way to have a package for this in these cases is to contact the developers of the software.";
     static [string]$fileValidationFailed = "We were unable to find a supported binary file in the download URL. Please make sure that the download URL is correct.";
     static [string]$fileValidationMaintainerNotice = "We were unable to directly download the provided software from the specified URL, additional work **may** be needed.";
@@ -128,12 +128,12 @@ class ValidationMessages {
 
     static [string]$maintainerContactedDateMissingError = "We could not detect when you contacted the maintainer. Please add this information to the *'Date the maintainer was contacted:'* part of the template in the format of ``year-month-day`` (example with current date ``$(Get-Date -Format 'yyy-MM-dd')``.";
     static [string]$maintainerContactedMethodMissingError = "We could not detect how you contacted the maintainer. Please add this information to the `'How the maintainer was contacted'* part of the template.";
-    static [string]$triageProcessNotFollowedError = "We could not detect that you have completed the Package Triage Process for this request. Please head over to the [Package Triage Process documentation](https://chocolatey.org/docs/package-triage-process#the-triage-process) and come back to this request when you have completed the process.";
+    static [string]$triageProcessNotFollowedError = "We could not detect that you have completed the Package Triage Process for this request. Please head over to the [Package Triage Process documentation](https://docs.chocolatey.org/en-us/community-repository/users/package-triage-process#the-triage-process) and come back to this request when you have completed the process.";
 }
 
 class WarningMessages {
-    static [string]$chocolateyUserConnected = "The chocolatey user [{0}](https://chocolatey.org/profiles/{0}) have already been connected to a github user.";
-    static [string]$chocolateyUserMissing = "The user {0} do not exist on https://chocolatey.org. Make sure there is no typo in the username.";
+    static [string]$chocolateyUserConnected = "The chocolatey user [{0}](https://community.chocolatey.org/profiles/{0}) have already been connected to a github user.";
+    static [string]$chocolateyUserMissing = "The user {0} do not exist on https://community.chocolatey.org. Make sure there is no typo in the username.";
     static [string]$downloadValidationFailed = "Downloading or file validation failed...";
     static [string]$exitingValidation = "Exiting validation.";
     static [string]$fileValidationFailed = "File validation failed. No supported binary type was found.";
