@@ -49,42 +49,56 @@ function Get-CommonValidationResults() {
         return $false
     }
 
-    try {
-        Write-Host ([StatusCheckMessages]::checkPackageExistOnChocolatey -f $validationData.packageName)
-        $chocolateyPage = Invoke-WebRequest -Uri ("https://chocolatey.org/packages/{0}" -f $validationData.packageName) -UseBasicParsing
-        $validationData.packageFound
+    $possiblePackageNames = @($validationData.packageName)
+    $noDashPackageName = $validationData.packageName -replace '-',''
 
-        Write-Host ([StatusMessages]::packageFoundOnChocolatey)
-
-        $allListedLinks = $chocolateyPage.Links | Where-Object { $_.href -match "^\/packages\/$($validationData.packageName)\/" -and $_.href -notmatch "Contact(Admins|Owners)$|ReportAbuse$" }
-        if ($validationData.isNewPackageRequest) {
-            Write-WarningMessage ([WarningMessages]::userRequestedNewPackage -f $validationData.packageName)
-            Update-StatusLabel -validationData $validationData -label ([StatusLabels]::incompleteRequest)
-            if (!$allListedLinks) {
-                $newMsg = [ValidationMessages]::packageExistsUnlistedError
-            }
-            else {
-                $newMsg = [ValidationMessages]::packageExistsError
-            }
-            Add-ValidationMessage -validationData $validationData -message ($newMsg -f $validationData.packageName) -type ([MessageType]::Error)
-
-            return $false
-        }
-
-        $validationData.packageFound = $true
-        $validationData.packageSourceUrl = $chocolateyPage.Links | Where-Object title -match "^See the package source\." | Select-Object -First 1 -ExpandProperty href
-        $validationData.packageMaintainers = $chocolateyPage.Links | Where-Object { $_.href -match "\/profiles\/" -and $_.title } | Select-Object -ExpandProperty title -Unique | Sort-Object
-    }
-    catch {
-        $validationData.packageFound = $false
-        if (!$validationData.isNewPackageRequest) {
-            Write-WarningMessage ([WarningMessages]::userRequestedNewMaintainer)
-            Update-StatusLabel -validationData $validationData -label ([StatusLabels]::incompleteRequest)
-            Add-ValidationMessage -validationData $validationData -message ([ValidationMessages]::packageNotFoundError -f $validationData.packageName) -type ([MessageType]::Error)
-
-            return $false
-        }
+    if ($noDashPackageName -ne $validationData.packageName) {
+        $possiblePackageNames += @($noDashPackageName)
     }
 
-    return $true
+    $result = $true
+
+    foreach ($packageName in $possiblePackageNames) {
+        try {
+            Write-Host ([StatusCheckMessages]::checkPackageExistOnChocolatey -f $packageName)
+            $chocolateyPage = Invoke-WebRequest -Uri ("https://community.chocolatey.org/packages/{0}" -f $packageName) -UseBasicParsing
+            $validationData.packageFound
+
+            Write-Host ([StatusMessages]::packageFoundOnChocolatey)
+
+            $allListedLinks = $chocolateyPage.Links | Where-Object { $_.href -match "^\/packages\/$($packageName)\/" -and $_.href -notmatch "Contact(Admins|Owners)$|ReportAbuse$" }
+            if ($validationData.isNewPackageRequest) {
+                Write-WarningMessage ([WarningMessages]::userRequestedNewPackage -f $packageName)
+                Update-StatusLabel -validationData $validationData -label ([StatusLabels]::incompleteRequest)
+                if (!$allListedLinks) {
+                    $newMsg = [ValidationMessages]::packageExistsUnlistedError
+                }
+                else {
+                    $newMsg = [ValidationMessages]::packageExistsError
+                }
+                Add-ValidationMessage -validationData $validationData -message ($newMsg -f $packageName) -type ([MessageType]::Error)
+
+                $result = $false
+                break
+            }
+
+            $validationData.packageFound = $true
+            $validationData.packageSourceUrl = $chocolateyPage.Links | Where-Object title -match "^See the package source\." | Select-Object -First 1 -ExpandProperty href
+            $validationData.packageMaintainers = $chocolateyPage.Links | Where-Object { $_.href -match "\/profiles\/" -and $_.title } | Select-Object -ExpandProperty title -Unique | Sort-Object
+            $result = $true
+            break
+        }
+        catch {
+            $validationData.packageFound = $false
+            if (!$validationData.isNewPackageRequest) {
+                Write-WarningMessage ([WarningMessages]::userRequestedNewMaintainer)
+                Update-StatusLabel -validationData $validationData -label ([StatusLabels]::incompleteRequest)
+                Add-ValidationMessage -validationData $validationData -message ([ValidationMessages]::packageNotFoundError -f $packageName) -type ([MessageType]::Error)
+
+                $result = $false
+            }
+        }
+    }
+
+    return $result
 }
