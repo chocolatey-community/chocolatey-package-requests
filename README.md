@@ -18,11 +18,11 @@ If you are an open source user requesting support, please remember that most fol
 
 ### Before submitting a request for packager (RFP)
 
-Search the [Chocolatey Community Repository](https://chocolatey.org/packages) to make sure the package doesn't already exist. Search using the program name and a hyphenated version of the program name; e.g. for Total Commander search for `totalcommander` and `total-commander`. You should also search for relevant tags such as `filemanager` or `file manager`.
+Search the [Chocolatey Community Repository](https://community.chocolatey.org/packages) to make sure the package doesn't already exist. Search using the program name and a hyphenated version of the program name; e.g. for Total Commander search for `totalcommander` and `total-commander`. You should also search for relevant tags such as `filemanager` or `file manager`.
 
 ### Before submitting a request for new maintainer(s) (RFM)
 
-If you are the current maintainer of the package then create a new request using "RFM - packagename". If you are not the current maintainer then please make sure you have read the [Package Triage Process](https://chocolatey.org/docs/package-triage-process#package-is-outdated) and follow the guidelines there.
+If you are the current maintainer of the package then create a new request using "RFM - packagename". If you are not the current maintainer then please make sure you have read the [Package Triage Process](https://docs.chocolatey.org/en-us/community-repository/users/package-triage-process#package-is-outdated) and follow the guidelines there.
 
 **NOTE**: Once a RFM request is accepted into the repository, any existing trusted status on chocolatey.org will be removed by the repository maintainers accepting the request.
 
@@ -56,9 +56,9 @@ The main Labels are as follows with the corresponding meaning:
   * For existing packages *(RFM)*, this means that the repository members have verified that the co-maintainer do not wish to continue working on the package, is unresponsive, and no outstanding questions are needed before handing the package over to a new maintainer.
 * [Status: Triage](https://github.com/chocolatey/chocolatey-package-requests/labels/Status%3A%20Triage):
   * For new package *(RFP)*, this label is unlikely to be used, unless a member of the repository have any questions needed to be answered before a maintainer can pick the request up.
-  * For existing package *(RFM)*, this label means that the members of the repository have been unable to verify that the [Package Triage](https://chocolatey.org/docs/package-triage-process#the-triage-process) process have been followed, or a repository member have a question before a new maintainer can be added.
+  * For existing package *(RFM)*, this label means that the members of the repository have been unable to verify that the [Package Triage](https://docs.chocolatey.org/en-us/community-repository/users/package-triage-process#the-triage-process) process have been followed, or a repository member have a question before a new maintainer can be added.
 * [Status: In Progress](https://github.com/chocolatey/chocolatey-package-requests/labels/Status%3A%20In%20Progress): A user have mentioned that they have started to work on the request, and/or a new maintainer have been added to the existing package.
-* [Status: Review](https://github.com/chocolatey/chocolatey-package-requests/labels/Status%3A%20Review): A package for the current request have been submitted to chocolatey.org, and is currently awaiting a review from the chocolatey community moderators.
+* [Status: Review](https://github.com/chocolatey/chocolatey-package-requests/labels/Status%3A%20Review): A package for the current request have been submitted to community.chocolatey.org, and is currently awaiting a review from the chocolatey community moderators.
 * [Status: Published](https://github.com/chocolatey/chocolatey-package-requests/labels/Status%3A%20Published): The package for the current request have been approved on the chocolatey community repository, and is now available for everyone to use.
 * [Status: Blocked Upstream](https://github.com/chocolatey/chocolatey-package-requests/labels/Blocked%20Upstream): There are known issues that need to be resolved before a package can be created for the current request. (This can be everything from needing to embed a package for a software that does not grant any distribution rights, download is blocked behind a login form, additional headers needed to be sent with the download request, and more...).
 * [Status: Duplicate](https://github.com/chocolatey/chocolatey-package-requests/labels/Duplicate): The current request is a duplicate of a previous open request.

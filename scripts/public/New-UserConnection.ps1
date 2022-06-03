@@ -60,7 +60,7 @@ function New-UserConnection {
         return
     }
 
-    $chocoUrlFormat = "https://chocolatey.org/profiles/{0}"
+    $chocoUrlFormat = "https://community.chocolatey.org/profiles/{0}"
 
 
     # TODO validate that current user have permissions to do this command (need write or triage access), unless the user have confirmed

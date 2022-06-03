@@ -4,7 +4,7 @@ about: Request a new maintainer for an existing package on the Chocolatey Commun
 ---
 
 <!--
-If you want to request a new maintainer for a package that you DO NOT MAINTAIN, please ensure you have followed the Package Triage Process - https://chocolatey.org/docs/package-triage-process - specifically you have contacted the maintainer using the 'Contact Maintainer' link on the package page.
+If you want to request a new maintainer for a package that you DO NOT MAINTAIN, please ensure you have followed the Package Triage Process - https://docs.chocolatey.org/en-us/community-repository/users/package-triage-process - specifically you have contacted the maintainer using the 'Contact Maintainer' link on the package page.
 
 If you have followed the Package Triage Process above and want to request to become the maintainer of a package that you DO NOT MAINTAIN, please go to the package page and click the 'Contact Site Admins' link and complete the details.
 
@@ -13,7 +13,7 @@ If you have followed the Package Triage Process above and do not want to request
 Please ensure the issue title starts with 'RFM - ' - for example 'RFM - adobe-reader'
 Please also ensure that the issue title matches the identifier of the package.
 
-Please ensure you have the package URL from https://chocolatey.org/packages before continuing.
+Please ensure you have the package URL from https://community.chocolatey.org/packages before continuing.
 
 NOTE: Keep in mind we have an etiquette regarding communication that we expect folks to observe when they are looking for support in the Chocolatey community - https://github.com/chocolatey/chocolatey-package-requests/blob/master/README.md#etiquette-regarding-communication
 
