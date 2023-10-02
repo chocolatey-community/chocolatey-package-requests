@@ -48,7 +48,7 @@ function Get-NewPackageValidationResult() {
     }
 
     Write-Host ([StatusCheckMessages]::checkingUserProvidedSoftwareProjectUrl)
-    $re = "(?smi)Software project URL\s*\:[\s\r\n]*(https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*))"
+    $re = "(?smi)Software project URL\s*\:[\s\r\n]*(https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,10}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*))"
     $m = Compare-Body @compareData -re $re
     if (!$m) {
         Update-StatusLabel -validationData $validationData -label ([StatusLabels]::incompleteRequest)
@@ -56,7 +56,7 @@ function Get-NewPackageValidationResult() {
     }
 
     Write-Host ([StatusCheckMessages]::checkingUserProvidedDirectDownloadUrl)
-    $re = "(?smi)Direct download[^\:]+\:[\s\r\n]*(https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*))"
+    $re = "(?smi)Direct download[^\:]+\:[\s\r\n]*(https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,10}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*))"
     $m = Compare-Body @compareData -re $re
     if (!$m) {
         Update-StatusLabel -validationData $validationData -label ([StatusLabels]::incompleteRequest)
