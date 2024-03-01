@@ -49,10 +49,12 @@ function Get-VirusTotalResults {
 
         Write-Host ([StatusMessages]::virusTotalResultsAvailable)
 
+        [int]$antiVirusCount = $stats.malicious + $stats.suspecious + $stats.harmless + $stats.undetected + $stats.timeout + $stats.failure + $stats.'confirmed-timout'
+
         @{
             Status     = "Found"
             Flagged    = ($stats.malicious + $stats.suspecious)
-            TotalCount = $response.data.attributes.last_analysis_results.Count - $stats.'type-unsupported'
+            TotalCount = $antiVirusCount
             Url        = "https://www.virustotal.com/gui/file/{0}" -f $checksum
         }
     }
