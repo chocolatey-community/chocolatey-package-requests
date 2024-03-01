@@ -17,7 +17,7 @@ function Update-Comment {
     [OutputType([CommentData])]
     param(
         [Parameter(Mandatory = $true)]
-        [int]$commentId,
+        [long]$commentId,
         [Parameter(Mandatory = $true)]
         [string]$repository,
         [Parameter(Mandatory = $true)]

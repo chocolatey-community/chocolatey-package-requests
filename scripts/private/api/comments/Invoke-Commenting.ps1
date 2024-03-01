@@ -12,7 +12,7 @@
 function Invoke-Commenting {
     param(
         [Parameter(Mandatory = $true)]
-        [int]$issueNumber,
+        [long]$issueNumber,
         [Parameter(Mandatory = $true)]
         [string]$repository,
         [Parameter(Mandatory = $true)]

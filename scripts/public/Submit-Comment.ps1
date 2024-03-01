@@ -17,9 +17,9 @@
 function Submit-Comment {
     param(
         [Parameter(Mandatory = $true, ParameterSetName = "New Issue")]
-        [int]$issueNumber,
+        [long]$issueNumber,
         [Parameter(Mandatory = $true, ParameterSetName = "Update Issue")]
-        [int]$commentId,
+        [long]$commentId,
         [Parameter(Mandatory = $true)]
         [string]$repository,
         [Parameter(Mandatory = $true)]

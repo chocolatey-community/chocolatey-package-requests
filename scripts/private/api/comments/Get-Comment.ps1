@@ -24,9 +24,9 @@ function Get-Comment() {
     [OutputType([CommentData])]
     param(
         [Parameter(Mandatory = $true, ParameterSetName = "known comment")]
-        [int]$commentId,
+        [long]$commentId,
         [Parameter(Mandatory = $true, ParameterSetName = "matching content")]
-        [int]$issueNumber,
+        [long]$issueNumber,
         [Parameter(Mandatory = $true, ParameterSetName = "matching content")]
         [string]$contentMatch,
         [Parameter(Mandatory = $true)]

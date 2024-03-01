@@ -12,7 +12,7 @@ function Remove-Comment() {
     [OutputType($null)]
     param(
         [Parameter(Mandatory = $true)]
-        [int]$commentId,
+        [long]$commentId,
         [Parameter(Mandatory = $true)]
         [string]$repository,
 

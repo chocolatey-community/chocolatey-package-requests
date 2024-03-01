@@ -30,7 +30,7 @@ function Update-Issue() {
     [OutputType([IssueData])]
     param(
         [Parameter(Mandatory = $true, ParameterSetName = "number")]
-        [int]$issueNumber,
+        [long]$issueNumber,
         [Parameter(Mandatory = $true, ParameterSetName = "number")]
         [string]$repository,
 

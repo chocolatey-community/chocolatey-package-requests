@@ -10,7 +10,7 @@
 function Remove-UserConnection() {
     param(
         [Parameter(Mandatory = $true)]
-        [int]$commentId,
+        [long]$commentId,
         [string]$repository = $env:GITHUB_REPOSITORY
     )
 

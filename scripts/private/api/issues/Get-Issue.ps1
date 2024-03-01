@@ -17,7 +17,7 @@ function Get-Issue() {
     [OutputType([IssueData])]
     param(
         [Parameter(Mandatory = $true, ParameterSetName = "number")]
-        [int]$issueNumber,
+        [long]$issueNumber,
         [Parameter(Mandatory = $true, ParameterSetName = "url")]
         [uri]$issueUrl,
         [Parameter(Mandatory = $true, ParameterSetName = "number")]

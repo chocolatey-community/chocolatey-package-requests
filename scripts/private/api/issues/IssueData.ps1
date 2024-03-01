@@ -5,10 +5,10 @@
 }
 
 class IssueData {
-    [int]$id;
+    [long]$id;
     [string]$url;
     [string]$html_url;
-    [int]$number;
+    [long]$number;
     [IssueState]$state;
     [string]$title;
     [string]$body;

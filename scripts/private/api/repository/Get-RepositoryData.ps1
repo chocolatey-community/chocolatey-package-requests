@@ -1,5 +1,5 @@
 ﻿class RepositoryData {
-    [int]$id;
+    [long]$id;
     [string]$name;
     [string]$full_name;
     [string]$html_url;

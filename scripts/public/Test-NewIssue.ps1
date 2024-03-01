@@ -14,9 +14,9 @@
 function Test-NewIssue {
     param (
         [Parameter(Mandatory = $true, ParameterSetName = "issue")]
-        [int]$issueNumber,
+        [long]$issueNumber,
         [Parameter(Mandatory = $true, ParameterSetName = "comment")]
-        [int]$commentId,
+        [long]$commentId,
         [string]$repository = $env:GITHUB_REPOSITORY,
         [switch]$DryRun
     )
