@@ -73,13 +73,15 @@ function Get-NewPackageValidationResult() {
         Add-ValidationMessage -validationData $validationData -message ([ValidationMessages]::githubSearchNotMarkedError -f $validationData.repository, ($validationData.packageName -replace ' ', '%20')) -type ([MessageType]::Error)
     }
 
+    $fileOutput = "$([System.IO.Path]::GetTempPath())software.tmp"
+
     try {
         if ($downloadUrl) {
             Write-Host ([StatusCheckMessages]::fileDownloadCheck)
-            Get-RemoteFile -url $downloadUrl -filePath "$env:TEMP/software.tmp"
+            Get-RemoteFile -url $downloadUrl -filePath $fileOutput
 
             Write-Host ([StatusCheckMessages]::fileDownloadCheck)
-            $result = Test-ValidFile "$env:TEMP/software.tmp"
+            $result = Test-ValidFile $fileOutput
 
             if ($result -eq "missing") {
                 Write-ErrorMessage ([ErrorMessages]::toolingMissing)
@@ -101,8 +103,6 @@ function Get-NewPackageValidationResult() {
                 $msg += "```````n</details>"
                 Add-ValidationMessage -validationData $validationData -message $msg -type $msgType
             }
-
-            Remove-Item "$env:TEMP/software.tmp" -ea 0
         }
         else {
             Write-WarningMessage ([WarningMessages]::noDownloadUrlFound)
@@ -112,6 +112,23 @@ function Get-NewPackageValidationResult() {
         Write-WarningMessage ([WarningMessages]::downloadValidationFailed)
         Add-ValidationMessage -validationData $validationData -message ([ValidationMessages]::fileValidationMaintainerNotice) -type ([MessageType]::Info)
         $validationData.newLabels += [StatusLabels]::upstreamBlocked
+    }
+
+    if (Test-Path $fileOutput) {
+        $results = Get-VirusTotalResults -filePath $fileOutput
+
+        if ($results.Status -eq "NoApiKey" -or $results.Status -eq "NotFound") {
+            Write-Host ([StatusMessages]::noVirusTotalStatusAvailable)
+            Add-ValidationMessage -validationData $validationData -message ([validationMessages]::noVirusTotalResults) -type ([MessageType]::Info)
+        }
+        elseif ($results.Flagged -gt 0) {
+            Add-ValidationMessage -validationData $validationData -message ([ValidationMessages]::virusTotalResultsCount -f $results.Flagged, $results.TotalCount, $results.Url) -type ([MessageType]::Info)
+        }
+        else {
+            Add-ValidationMessage -validationData $validationData -message ([ValidationMessages]::virusTotalResultsNone -f $results.Url) -type ([MessageType]::Info)
+        }
+
+        Remove-Item $fileOutput -ea 0
     }
 
     return $true
