@@ -4,6 +4,8 @@ about: Request a new maintainer for an existing package on the Chocolatey Commun
 ---
 
 <!--
+The maintainer name `needs_new_maintainer` is added to a package that has no maintainers and is available to pick up by any other maintainer. Please do not raise issues for this maintainer.
+
 If you want to request a new maintainer for a package that you DO NOT MAINTAIN, please ensure you have followed the Package Triage Process - https://docs.chocolatey.org/en-us/community-repository/users/package-triage-process - specifically you have contacted the maintainer using the 'Contact Maintainer' link on the package page.
 
 If you have followed the Package Triage Process above and want to request to become the maintainer of a package that you DO NOT MAINTAIN, please go to the package page and click the 'Contact Site Admins' link and complete the details.
@@ -28,12 +30,14 @@ otherwise if you are the current maintainer of the package please remove the 'I 
 
 <!-- If you are not confirmed as a known maintainer, you may be asked to take additional steps to confirm your user account -->
 
-- [ ] I am the maintainer of the package and wish to pass it to someone else;
+- [ ] I am the maintainer of the package and wish to pass it to someone else.
 
 ## I DON'T Want To Become The Maintainer
 
-- [ ] I have followed the Package Triage Process and I do NOT want to become maintainer of the package;
-- [ ] There is no existing open maintainer request for this package;
+- [ ] The maintainer is not `needs_new_maintainer`.
+- [ ] I have followed the Package Triage Process and I do NOT want to become maintainer of the package.
+- [ ] The last attempt to contact the maintainer was _at least_ 7 days ago.
+- [ ] There is no existing open maintainer request for this package.
 
 ## Checklist
 
