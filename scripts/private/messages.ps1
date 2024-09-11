@@ -122,7 +122,7 @@ class ValidationMessages {
 
     static [string]$currentMaintainerCheckboxMissingError = "We was able to verify that you are the maintainer of the package, however we could not detect this being mentioned in the issue. Please add the template checkbox for confirming that you are the current maintainer.";
     static [string]$currentMaintainerNotVerifiedUserIsKnownError = "We could not verify that you are a known maintainer of this package. We did find that you are a known user under a different chocolatey username. Please replace the ``Current Maintainer`` section with the template for ``I DON'T Want To Become The Maintainer`` section.";
-    static [string]$currentMaintainerNotVerifiedUserIsUnknownError = "We could not verify that you are a known maintainer of this package. We also do not know which username your github account is associated with. Please add a comment with ``/confirm your-chocolatey-username`` to confirm and associate your github account with a chocolatey user, or replace the ``Current Maintainer`` section with the template for ``I DON'T Want To Become The Maintainer`` section.";
+    static [string]$currentMaintainerNotVerifiedUserIsUnknownError = "We could not verify that you are a known maintainer of this package. We also do not know which username your github account is associated with. Please add a comment with ``/confirm <YOUR CHOCOLATEY USERNAME>`` to confirm and associate your github account with a chocolatey user, or replace the ``Current Maintainer`` section with the template for ``I DON'T Want To Become The Maintainer`` section.";
 
     # Not current maintainer validation messages
 
