@@ -54,6 +54,7 @@ jobs:
     needs: comments
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      VIRUS_TOTAL_API_KEY: ${{ secrets.VIRUS_TOTAL_API_KEY }}
       COMMENT_BODY: ${{ github.event.comment.body }}
       # Becasue comment steps take way shorter time than installing
       # packages, we can run these in parallel

@@ -38,6 +38,7 @@ class StatusCheckMessages {
     static [string]$fileDownloadCheck = "Downloading file from direct download URL for testing.";
     static [string]$fileDownloadedTest = "Testing downloaded file";
     static [string]$issueUsesRFPOrRFMTitle = "Checking if user have prefixed title withe RFP or RFM";
+    static [string]$virusTotalCheck = "Checking for existing VirusTotal results";
 }
 
 class StatusMessages {
@@ -60,6 +61,8 @@ class StatusMessages {
     static [string]$userNotMarkedRFPTitleCorrectly = "User have not marked that he/she have prefixed the issue title with RFP";
     static [string]$userNotProvidedPackageSourceUrl = "User seems to not have provided any URL to the package source (or one do not exist).";
     static [string]$userNotProvidedPackageUrl = "User seems to not have provided any URL to the package";
+    static [string]$noVirusTotalStatusAvailable = "No VirusTotal results are available";
+    static [string]$virusTotalResultsAvailable = "Found VirusTotal check results"
 }
 
 class StatusLabels {
@@ -129,6 +132,11 @@ class ValidationMessages {
     static [string]$maintainerContactedDateMissingError = "We could not detect when you contacted the maintainer. Please add this information to the *'Date the maintainer was contacted:'* part of the template in the format of ``year-month-day`` (example with current date ``$(Get-Date -Format 'yyy-MM-dd')``.";
     static [string]$maintainerContactedMethodMissingError = "We could not detect how you contacted the maintainer. Please add this information to the `'How the maintainer was contacted'* part of the template.";
     static [string]$triageProcessNotFollowedError = "We could not detect that you have completed the Package Triage Process for this request. Please head over to the [Package Triage Process documentation](https://docs.chocolatey.org/en-us/community-repository/users/package-triage-process#the-triage-process) and come back to this request when you have completed the process.";
+
+    # VirusTotal messages, only informational messages
+    static [string]$noVirusTotalResults = "There are no VirusTotal results available for this software. Please upload the binary file to [VirusTotal](https://www.virustotal.com/gui/home/upload).";
+    static [string]$virusTotalResultsCount = "{0}/{1} anti-virus softwares flagged this software on [VirusTotal]({2})";
+    static [string]$virusTotalResultsNone = "No anti-virus softwares have flagged this software on [VirusTotal]({0})";
 }
 
 class WarningMessages {

@@ -133,18 +133,35 @@ function Test-NewIssue {
         $warnings = $validationData.messages | Where-Object type -EQ ([MessageType]::Warning)
         if ($warnings) {
             $commentBody += "`n`n" + [ValidationMessages]::noticesHeader
+            $detailsComment = ""
             $warnings | ForEach-Object {
-                $commentBody += "`n- $($_.message)"
+                # When using the <details> section, special handling is needed
+                if ($_.message -match "\<details\>") {
+                    $detailsComment = $_.message
+                }
+                else {
+                    $commentBody += "`n- $($_.message)"
+                }
             }
+            $commentBody += "`n`n$detailsComment"
         }
     }
 
     $infos = $validationData.messages | Where-Object type -EQ ([MessageType]::Info)
     if ($infos) {
         $commentBody += "`n`n" + [ValidationMessages]::maintainersHeader
+        $detailsComment = ""
         $infos | ForEach-Object {
-            $commentBody += "`n- $($_.message)"
+            # When using the <details> section, special handling is needed
+            if ($_.message -match "\<details\>") {
+                $detailsComment = $_.message
+            }
+            else {
+                $commentBody += "`n- $($_.message)"
+            }
         }
+
+        $commentBody += "`n`n$detailsComment"
     }
 
     $commentBody += [ValidationMessages]::commentBodyFooter
